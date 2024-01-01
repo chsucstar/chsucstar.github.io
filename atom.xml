@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Hexo</title>
+  
+  
+  <link href="http://example.com/atom.xml" rel="self"/>
+  
+  <link href="http://example.com/"/>
+  <updated>2024-01-01T07:39:03.183Z</updated>
+  <id>http://example.com/</id>
+  
+  <author>
+    <name>chsucstar</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>new2024</title>
+    <link href="http://example.com/2024/01/01/new2024/"/>
+    <id>http://example.com/2024/01/01/new2024/</id>
+    <published>2024-01-01T05:57:37.000Z</published>
+    <updated>2024-01-01T07:39:03.183Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="2024-1-1"><a href="#2024-1-1" class="headerlink" title="2024&#x2F;1&#x2F;1"></a>2024&#x2F;1&#x2F;1</h1><p><img src="/2024/01/01/new2024/202411.jpeg" alt="default"></p><center>守株待兔，固不可取。</center><center>叶公好龙，亦非所得。</center><center>临渊羡鱼，不如退而结网。</center><center>亡羊补牢，何如未雨绸缪。</center><p align="right">图片出处：赵芾江山万里图卷</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;2024-1-1&quot;&gt;&lt;a href=&quot;#2024-1-1&quot; class=&quot;headerlink&quot; title=&quot;2024&amp;#x2F;1&amp;#x2F;1&quot;&gt;&lt;/a&gt;2024&amp;#x2F;1&amp;#x2F;1&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;/2024/01/01/new2</summary>
+      
+    
+    
+    
+    <category term="log" scheme="http://example.com/categories/log/"/>
+    
+    
+    <category term="life" scheme="http://example.com/tags/life/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>newbin</title>
+    <link href="http://example.com/2023/12/31/newbin/"/>
+    <id>http://example.com/2023/12/31/newbin/</id>
+    <published>2023-12-31T04:42:11.000Z</published>
+    <updated>2024-01-01T07:36:24.601Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="/2023/12/31/newbin/default.jpeg"></p><p>I hope the Pacific is as blue as it has been in my dreams.<br>I hope.</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;/2023/12/31/newbin/default.jpeg&quot;&gt;&lt;/p&gt;
+&lt;p&gt;I hope the Pacific is as blue as it has been in my dreams.&lt;br&gt;I hope.&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    <category term="log" scheme="http://example.com/categories/log/"/>
+    
+    
+    <category term="life" scheme="http://example.com/tags/life/"/>
+    
+  </entry>
+  
+</feed>
