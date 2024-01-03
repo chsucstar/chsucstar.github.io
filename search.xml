@@ -93,10 +93,30 @@
 </table>
 <br>
 <h1>IPV6</h1>
-<p>由128位二进制构成，采用冒号十六进制表示，并分成了8组，每组4位的十六进制。</p>
+<p>由128位二进制构成，采用 <strong>冒号十六进制</strong> 表示，并分成了8组，每组4位的十六进制。</p>
 <p>理论上说 IPV6 的 IP 地址个数是 IPV4 的 IP 地址个数的 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mn>96</mn></msup></mrow><annotation encoding="application/x-tex">2^{96}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">9</span><span class="mord mtight">6</span></span></span></span></span></span></span></span></span></span></span></span> 倍。</p>
 <p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><msup><mn>2</mn><mn>128</mn></msup><msup><mn>2</mn><mn>32</mn></msup></mfrac><mo>=</mo><msup><mn>2</mn><mn>98</mn></msup></mrow><annotation encoding="application/x-tex">\frac {2^{128}}{2^{32}}=2^{98}
 </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.177108em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.491108em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.740108em;"><span style="top:-2.9890000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mord mtight">2</span><span class="mord mtight">8</span></span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8641079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641079999999999em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">9</span><span class="mord mtight">8</span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+<br>
+<h2 id="使用冒分十六进制">使用冒分十六进制</h2>
+<ul>
+<li>
+<p><strong>零点压缩法：</strong></p>
+<p>把连续的1组或多组0可以省略</p>
+<p>如：<code>EF00:0000:0000:0000:0002:0000:0001:0003</code></p>
+<p>压缩为：<code>EF00::0002:0000:0001:0003</code></p>
+</li>
+<li>
+<p><strong>可省略每组前面的零</strong></p>
+<p>如：<code>EF00:0000:0000:0000:0002:0000:0001:0003</code></p>
+<p>压缩为：<code>EF00:0:0:0002:0:1:3</code></p>
+</li>
+<li>
+<p><strong>也可以上面的合起来一起用</strong></p>
+<p>如：<code>EF00:0000:0000:0000:0002:0000:0001:0003</code></p>
+<p>压缩为：<code>EF00::2:0:1:3</code></p>
+</li>
+</ul>
 ]]></content>
       <categories>
         <category>网络层</category>
@@ -135,6 +155,45 @@ I hope.</p>
       </categories>
       <tags>
         <tag>life</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>subnetting</title>
+    <url>/2024/01/03/subnetting/</url>
+    <content><![CDATA[<h1>1.划分子网</h1>
+<p>划分子网用于缓解网络号不足的情况，网络允许划分更小的网络，这样的网络称为 <code>子网</code> ，从实际上就是从主机部分借位来表示子网。</p>
+<ul>
+<li>
+<p><strong>子网号</strong></p>
+<p>主机号的前几位</p>
+</li>
+<li>
+<p><strong>主机位数</strong></p>
+<p>主机位数=32-现有子网掩码1的个数</p>
+</li>
+</ul>
+<br>
+<h2 id="1-1-求子网地址和子网号：">1.1 求子网地址和子网号：</h2>
+<p><strong>网络号</strong> 也称 <strong>网络地址</strong></p>
+<p>子网地址：网络号（照抄）+ 子网号（照抄）+ 主机号（全部是0）</p>
+<p>广播地址：网络号（照抄）+ 子网号（照抄）+ 主机号（全部是1）</p>
+<p>子网掩码：网络号（全部为1）+ 子网号（全部为1）+ 主机号（全部是1）</p>
+<br>
+<h3 id="1-1-2-示列">1.1.2 示列:</h3>
+<p>IP地址为 <code>192.168.1.163</code>，子网掩码 <code>255.255.255.224</code> 。</p>
+<p>网络号是 <code>192.168.1</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">相关地址: 11000000  10101000  00000001  10100011   192.168.1.163</span><br><span class="line">子网掩码: 11111111  11111111  11111111  11100000   255.255.255.224</span><br><span class="line">子网地址: 11000000  10101000  00000001  10100000   192.168.1.160</span><br></pre></td></tr></table></figure>
+<p>这里的子网号是5，子网位数本示列是3，所以10100000，取三位是5。</p>
+<p>子网号（数字）：把IP地址和子网掩码最后一组进行 <code>与运算</code> ，在结果上从左往右区 n 位，再转十进制，不过在算 <strong>子网地址</strong> 的时候子网号是八位的二进制转十进制。</p>
+<h2 id="1-2-其他">1.2 其他</h2>
+<p>子网个数 = <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">2^{n}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.664392em;vertical-align:0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.664392em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">n</span></span></span></span></span></span></span></span></span></span></span></span> （n 表示子网位数）</p>
+<p>主机数量 = <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mi>m</mi></msup><mo>−</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">2^{m}-2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.747722em;vertical-align:-0.08333em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.664392em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">m</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span></span></span></span> （m 表示主机位数）</p>
+]]></content>
+      <categories>
+        <category>网络层</category>
+      </categories>
+      <tags>
+        <tag>划分子网</tag>
       </tags>
   </entry>
 </search>
