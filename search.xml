@@ -390,4 +390,167 @@ I hope.</p>
         <tag>telnet</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Linux远程访问第二部分</title>
+    <url>/2024/01/07/Linux%E8%BF%9C%E7%A8%8B%E8%AE%BF%E9%97%AE%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86/</url>
+    <content><![CDATA[<h1>⬆️VNC概念与原理</h1>
+<p>Linux 大多数情况下都是远程进行管理的，当在管理的过程中很少会用到图形界面，多数情况下用到的是 ssh 连接服务器。</p>
+<p>有的时候使用图形界面会方便一些，比如说甲骨文的数据库的安装。</p>
+<br>
+<h2 id="什么是-vnc">➡️什么是 VNC</h2>
+<p>VNC 允许我们开启一个远程的会话来连接，这样就能远程访问图形界面了。</p>
+<ul>
+<li><strong>Virtual Network Console</strong></li>
+<li><strong>VNC 是一个自由开源软件</strong></li>
+<li><strong>目的：让用户可以远程访问服务器的桌面环境</strong></li>
+<li><strong>服务器包括：</strong>
+<ul>
+<li>Linux、Unix、FreeBSD</li>
+<li>Windows</li>
+<li>…</li>
+</ul>
+</li>
+<li><strong>很多平台均有 VNC viewer客户端</strong></li>
+</ul>
+<br>
+<h2 id="vnc-基本原理">➡️VNC 基本原理</h2>
+<ul>
+<li><strong>两部分组成：</strong>
+<ul>
+<li>服务端的应用程序   vncserver</li>
+<li>客户端的应用程序   vncviewer</li>
+</ul>
+</li>
+<li><strong>工作原理</strong>
+<ul>
+<li>在服务器端启动 VNC Server</li>
+<li>VNC客户端通过浏览器或 VNC Viewer 连接至 VNC Server</li>
+<li>VNC Server 传送对话窗口至客户端，要求输入密码，以及存取的 VNC Server 显示设备。</li>
+<li>在客户端输入联机密码后，VNC Server 验证客户端是否具有存储权限。</li>
+<li>若是客户端通过 VNC Server 的验证，客户端即要求 VNC Server 显示桌面环境 VNC Server 通过 X Protocol 要求 X Server 将画面显示控制权交由 VNC Server 负责。</li>
+<li>VNC Server 将来由 X Server 的桌面环境利用 VNC 通信协议送至客户端，并且允许客户端控制 VNC Server 的桌面环境及输入装置。</li>
+</ul>
+</li>
+</ul>
+<p><img src="/images/remote-administration/vnc.png" alt></p>
+<br>
+<h2 id="新的vnc-服务器安装">➡️新的VNC 服务器安装</h2>
+<h3 id="🟦新版-linux上安装-vnc-服务器">🟦新版-Linux上安装 VNC 服务器</h3>
+<p>2021年 <strong>centos8</strong> 将 <strong>tigerVNC</strong> 进行了升级，把 <strong>1.9</strong> 升级到了 <strong>1.10.1</strong>，这在管理上有改动。</p>
+<p>原来是属于高级配置的管理功能，（把 VNCserver 作为服务自动启动、多用户同时使用）简化了。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># dnf -y install tigervnc-server</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># rpm -qi tigervnc-server</span><br><span class="line"># rpm -qc tigervnc-server</span><br><span class="line"># rpm -ql tigervnc-server | grep bin</span><br></pre></td></tr></table></figure>
+<br>
+<h3 id="🟦新版-考察安装结果">🟦新版-考察安装结果</h3>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># vncserver --help</span><br><span class="line">vncserver has been replaced by a systemd unit.</span><br><span class="line">Please read /usr/share/doc/tigervnc/HOWTO.md for more information.</span><br></pre></td></tr></table></figure>
+<p>这里说可以通过 <code>systemctl</code> 来控制，在早期版本可以很简单的去运行 vncserver，而要将其做成服务，做成 unit 还是需要好几个配置的，新的版本做出了简化。</p>
+<br>
+<h3 id="🟦新版-配置vnc服务器">🟦新版-配置VNC服务器</h3>
+<p><strong>1.添加用户映射</strong></p>
+<p>用户映射的意思：在 VNC 里面允许有多个桌面，每个桌面有个桌面编号，下面是1号桌面与 root 做管理，2号桌面则与 tom 做关联。</p>
+<blockquote style="border-left: 5px solid #6CA2F9; background-color: #ECF3FE; padding: 10px;">
+<div style="color: #24687D; font-weight: bold;height: 20px;height:25px;">🔵 注意：</div> 
+    <p style=" text-indent: 2em;">vnc用自己的密码体系</p></blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vi /etc/tigervnc/vncserver.users</span><br><span class="line">:1=root</span><br><span class="line">:2=tom</span><br></pre></td></tr></table></figure>
+<blockquote style="border-left: 5px solid #f0ab00; background-color: #fdf7e7; padding: 10px;">
+<div style="color: #7d643f; font-weight: bold;height: 20px;height:25px;">🟡 重要：</div> 
+    <p style=" text-indent: 2em;">这里面的账户需要你本地Linux系统中有一样命名账户
+    。</p>
+    <p style=" text-indent: 2em;">这里面的账户密码是自己的密码，和操作系统的密码是不一样的。</p></blockquote>
+<p><strong>监听端口：</strong><code>590+桌面号</code></p>
+<p>做了关联之后，<code>客户端 IP:590+桌面号</code> 来添加。</p>
+<p>这样就做到了以不同的桌面监听不同的端口号。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># netstat -anp | grep vnc | grep ^top</span><br><span class="line">Proto	Local Address	Foreign Address 	State		PID/Program</span><br><span class="line">tcp     0.0.0.0:5901    0.0.0.0:*           LISTEN      34189/Xvnc</span><br><span class="line">tcp     0.0.0.0:5902    0.0.0.0:*           LISTEN      34143/Xvnc</span><br><span class="line">tcp6    :::5901         :::*                LISTEN      34189/Xvnc</span><br><span class="line">tcp6    :::5902         :::*                LISTEN      35143/Xvnc</span><br></pre></td></tr></table></figure>
+<p><strong>2.配置Xvnc的选项</strong></p>
+<ul>
+<li>
+<p><strong>配置文件应用次序：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/etc/tigervnc/vncserver-config-default</span><br><span class="line">            ↓</span><br><span class="line">$HOME/.vnc/config</span><br><span class="line">            ↓</span><br><span class="line">/etc/tigervnc/vncserver-config-madatory</span><br><span class="line">从优先级来说是反着来的</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>最简单的配置：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># vi /etc/tigervnc/vncserver-config-default</span><br><span class="line">  session=gnome</span><br><span class="line">  </span><br><span class="line"># man vncserver</span><br><span class="line"># man xvnc</span><br></pre></td></tr></table></figure>
+<p>这就是说，用户登陆后使用的是gnome的桌面。</p>
+</li>
+</ul>
+<p><strong>3.设置VNC密码</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># id -un</span><br><span class="line">  root</span><br><span class="line"></span><br><span class="line"># vncpasswd</span><br><span class="line">  Password: 输入密码</span><br><span class="line">  Verify: 再次输入密码</span><br><span class="line">  Would you like lo enLer a view-only password (y/n)? n</span><br><span class="line">  A view-only password is not used</span><br></pre></td></tr></table></figure>
+<p>VNC 设置用户的密码，这需要在当前登陆用户来进行.</p>
+<p>如：设置 VNC 中 root 的密码，那么当前操作系统的用户就是 root。密码会保存在家目录一个名为 vnc 的隐藏文件夹当中。</p>
+<p><strong>4.启动Tigervnc服务器</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># systemctl start vncserver@:1.serice</span><br><span class="line"># systemctl enable vncserver@:1.serice</span><br><span class="line"></span><br><span class="line"># systemctl start vncserver@:2.serice</span><br><span class="line"># systemctl enable vncserver@:2.serice</span><br></pre></td></tr></table></figure>
+<p>这启动了第一个桌面，第二个桌面。</p>
+<p><strong>5.配置防火墙</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># firewall-cmd --add-service=vnc-server --permanent</span><br><span class="line"># firewall-cmd --reload</span><br><span class="line"># firewall-cmd --info-service=vnc-server</span><br><span class="line">  vnc-server</span><br><span class="line">     ports: 5900-5903/tcp</span><br><span class="line">     protocols:</span><br><span class="line">  ... 略 ...</span><br></pre></td></tr></table></figure>
+<br>
+<h2 id="旧版vnc-服务器安装">➡️旧版VNC 服务器安装</h2>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># yum -y install tigervnc-server</span><br><span class="line"># rpm -qi tigervnc-server</span><br><span class="line"># rpm -qc tigervnc-server</span><br><span class="line">  /etc/sysconfig/vncservers</span><br></pre></td></tr></table></figure>
+<br>
+<h2 id="vnc-服务器最简单的配置">➡️VNC 服务器最简单的配置</h2>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># vncserver</span><br><span class="line"># vncserver -list</span><br><span class="line"></span><br><span class="line"># ps aux | grep vnc</span><br><span class="line"># netstat -anp | grep vnc</span><br></pre></td></tr></table></figure>
+<p>第一次执行vnc的时候，不需要一些额外的参数。</p>
+<br>
+<h2 id="vnc客户端">➡️VNC客户端</h2>
+<h3 id="🟦windows上的vnc客户机">🟦Windows上的VNC客户机</h3>
+<ul>
+<li>
+<p><strong>常见的客户端</strong></p>
+<ul>
+<li>Realvnc viewer</li>
+<li>Tightvnc viewer</li>
+</ul>
+</li>
+<li>
+<p><strong>下载地址</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">https://www.realvnc.com/en/connect/download/vnc/</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<br>
+<h3 id="🟦vnc链接测试-新版本客户端">🟦VNC链接测试-新版本客户端</h3>
+<p><strong>服务器标识</strong></p>
+<ul>
+<li><code>IP地址:桌面编号</code></li>
+<li><code>IP地址:网络端口号</code></li>
+</ul>
+<br>
+<h2 id="作为服务自动启动">➡️作为服务自动启动</h2>
+<p>VNC的高级设置：VNC Server作为服务自动启动、多用户同时访问、通过SSH加密流量。</p>
+<p>如果是经常去访问 VNC 可以把 VNC Server自动其启动，这样即使是服务器自动启动了，那么也能很快的连接上去。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># rpm -ql tigervnc-server</span><br><span class="line">  ... ...</span><br><span class="line">  /usr/lib/systemd/system/vncserver@.service</span><br><span class="line">  ... ...</span><br><span class="line"># cp /usr/lib/systemd/system/vncserver@.service \</span><br><span class="line">     /etc/systemd/system/vncserver@:1.service</span><br><span class="line"># vi /etc/systemd/system/vncserver@\:1.service</span><br><span class="line">  ... ...</span><br><span class="line">  #ExecStart=/usr/bin/vncserver_wrapper &lt;USER&gt; %i</span><br><span class="line">  ExecStart=/usr/bin/vncserver_wrapper root %i</span><br><span class="line"></span><br><span class="line"># systemctl deamon-reload</span><br><span class="line"># systemctl start vncserver@\:1.service</span><br><span class="line"># systemctl enable vucserver@:1.service</span><br></pre></td></tr></table></figure>
+<br>
+<h2 id="多用户同时访问">➡️多用户同时访问</h2>
+<p><strong>Alice使用桌面1</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># cp /usr/lib/systemd/system.cnvserver@.service \</span><br><span class="line">  /etc/systemd/system/vncserver-alice@.service</span><br><span class="line"># vi /etc/systemd/system/vncserveer-alice@.service</span><br><span class="line">  ... ...</span><br><span class="line">  ExecStart=/usr/bin/vncserver_wrapper alice %i</span><br><span class="line">  ... ...</span><br><span class="line"># systemctl start vncserver-alice@:1.service</span><br><span class="line"># systemctl eanble vncserver-alice@:1.service</span><br></pre></td></tr></table></figure>
+<p><strong>Bob使用桌面2</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># cp /usr/lib/systemd/system.cnvserver@.service \</span><br><span class="line">  /etc/systemd/system/vncserver-bob@.service</span><br><span class="line"># vi /etc/systemd/system/vncserveer-bob@.service</span><br><span class="line">  ... ...</span><br><span class="line">  ExecStart=/usr/bin/vncserver_wrapper alice %i</span><br><span class="line">  ... ...</span><br><span class="line"># systemctl start vncserver-bob@:2.service</span><br><span class="line"># systemctl eanble vncserver-bob@:2.service</span><br></pre></td></tr></table></figure>
+<p>同时访问有两种模式，第一种是多人访问同一个桌面编号的情况，这种情况很简单。</p>
+<p>或者每个人访问不同的桌面，这就需要配置不同的网络端口。</p>
+<br>
+<h2 id="通过ssh加密流量">➡️通过SSH加密流量</h2>
+<h3 id="🟦vnc传输的安全性">🟦VNC传输的安全性</h3>
+<p><img src="/images/remote-administration/vnc1.png" alt></p>
+<p>VNC 客户端 与 tigerVNC 之间的网络流量是不加密的，也就是通过明文来传递，这就有安全问题，因为黑客有可能截获还原用户操作的过程。</p>
+<p>有一些 VNC 的服务器，支 持VNC 的加密。</p>
+<br>
+<h3 id="🟦vnc-ssh隧道">🟦VNC+SSH隧道</h3>
+<p><img src="/images/remote-administration/vnc2.png" alt></p>
+<p>对于 tigerVNC 来说，可以使用SSH来结合一下。</p>
+<p>先通过 SSH 来构建一条安全隧道，然后在其中去传递VNC的信息，这是tigerVNC的标准做法。</p>
+<p>**工作原理：**右边是SSH的服务器，比如说是openssh-server,先会和左边的客户端putty建立起连接构建一个安全通道，在左边的windows主机上，假如putty主机的ID是3712，通过终端上的命令 <code>netstat -ano | find “5901”</code> 可以看到查看3712进程在监听5901的端口。左边VNC客户机的进程是10092,它的访问地址是 localhost:1 也就是访问本地一号桌面，也就是访问5901端口，5901又是putty在监听。</p>
+<p>这些流量会通过安全隧道发送到右边的服务器端，这里面服务器的SSH的端口是5630，会把收到的请求转发给本地监听5901的进程，这个进程是1389。这样5630建立起来会话，VNC的请求会通过隧道转发给VNCserver收到。</p>
+<p>这种VNC+SSH的工作原理，是SSH的客户端和SSH的服务器之间先建立起安全的隧道，VNC客户端的流量首先会传递给本地是SSH客户机，然后转发SSH服务器，随后给VNCserver。</p>
+<p>这个方案的关键点就是SSH客户机。</p>
+<br>
+<h3 id="🟦配置">🟦配置</h3>
+<p>启动SSH的客户端软件指定SSH隧道，在SSH中输入监听的端口 <code>5901</code>，然后设置转发的远程的 <code>192.168.10.10:5901</code> 。</p>
+<p>打开 VNC 的客户端，这时候输入的是 <code>localhost:1</code> 这实际上是SSH客户端监听相关进程的端口。</p>
+]]></content>
+      <categories>
+        <category>Linux服务配置</category>
+      </categories>
+      <tags>
+        <tag>VNC</tag>
+        <tag>XRDP</tag>
+      </tags>
+  </entry>
 </search>

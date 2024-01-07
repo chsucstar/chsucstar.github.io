@@ -1,0 +1,309 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Linux远程访问第二部分 | Hexo</title><meta name="author" content="chsucstar"><meta name="copyright" content="chsucstar"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="⬆️VNC概念与原理 Linux 大多数情况下都是远程进行管理的，当在管理的过程中很少会用到图形界面，多数情况下用到的是 ssh 连接服务器。 有的时候使用图形界面会方便一些，比如说甲骨文的数据库的安装。  ➡️什么是 VNC VNC 允许我们开启一个远程的会话来连接，这样就能远程访问图形界面了。  Virtual Network Console VNC 是一个自由开源软件 目的：让用户可以远程访">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux远程访问第二部分">
+<meta property="og:url" content="http://example.com/2024/01/07/Linux%E8%BF%9C%E7%A8%8B%E8%AE%BF%E9%97%AE%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="⬆️VNC概念与原理 Linux 大多数情况下都是远程进行管理的，当在管理的过程中很少会用到图形界面，多数情况下用到的是 ssh 连接服务器。 有的时候使用图形界面会方便一些，比如说甲骨文的数据库的安装。  ➡️什么是 VNC VNC 允许我们开启一个远程的会话来连接，这样就能远程访问图形界面了。  Virtual Network Console VNC 是一个自由开源软件 目的：让用户可以远程访">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com//img/Avatar.jpg">
+<meta property="article:published_time" content="2024-01-07T04:27:44.000Z">
+<meta property="article:modified_time" content="2024-01-07T04:58:23.647Z">
+<meta property="article:author" content="chsucstar">
+<meta property="article:tag" content="VNC">
+<meta property="article:tag" content="XRDP">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com//img/Avatar.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2024/01/07/Linux%E8%BF%9C%E7%A8%8B%E8%AE%BF%E9%97%AE%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Linux远程访问第二部分',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-01-07 12:58:23'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.0.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+<link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/%5Cimg%5CAvatar.jpg" onerror="onerror=null;src='/img/Avatar.jpg'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><hr class="custom-hr"/></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="Hexo"><span class="site-name">Hexo</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">Linux远程访问第二部分</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-01-07T04:27:44.000Z" title="发表于 2024-01-07 12:27:44">2024-01-07</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-01-07T04:58:23.647Z" title="更新于 2024-01-07 12:58:23">2024-01-07</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Linux%E6%9C%8D%E5%8A%A1%E9%85%8D%E7%BD%AE/">Linux服务配置</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Linux远程访问第二部分"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="post-content" id="article-container"><h1>⬆️VNC概念与原理</h1>
+<p>Linux 大多数情况下都是远程进行管理的，当在管理的过程中很少会用到图形界面，多数情况下用到的是 ssh 连接服务器。</p>
+<p>有的时候使用图形界面会方便一些，比如说甲骨文的数据库的安装。</p>
+<br>
+<h2 id="什么是-vnc">➡️什么是 VNC</h2>
+<p>VNC 允许我们开启一个远程的会话来连接，这样就能远程访问图形界面了。</p>
+<ul>
+<li><strong>Virtual Network Console</strong></li>
+<li><strong>VNC 是一个自由开源软件</strong></li>
+<li><strong>目的：让用户可以远程访问服务器的桌面环境</strong></li>
+<li><strong>服务器包括：</strong>
+<ul>
+<li>Linux、Unix、FreeBSD</li>
+<li>Windows</li>
+<li>…</li>
+</ul>
+</li>
+<li><strong>很多平台均有 VNC viewer客户端</strong></li>
+</ul>
+<br>
+<h2 id="vnc-基本原理">➡️VNC 基本原理</h2>
+<ul>
+<li><strong>两部分组成：</strong>
+<ul>
+<li>服务端的应用程序   vncserver</li>
+<li>客户端的应用程序   vncviewer</li>
+</ul>
+</li>
+<li><strong>工作原理</strong>
+<ul>
+<li>在服务器端启动 VNC Server</li>
+<li>VNC客户端通过浏览器或 VNC Viewer 连接至 VNC Server</li>
+<li>VNC Server 传送对话窗口至客户端，要求输入密码，以及存取的 VNC Server 显示设备。</li>
+<li>在客户端输入联机密码后，VNC Server 验证客户端是否具有存储权限。</li>
+<li>若是客户端通过 VNC Server 的验证，客户端即要求 VNC Server 显示桌面环境 VNC Server 通过 X Protocol 要求 X Server 将画面显示控制权交由 VNC Server 负责。</li>
+<li>VNC Server 将来由 X Server 的桌面环境利用 VNC 通信协议送至客户端，并且允许客户端控制 VNC Server 的桌面环境及输入装置。</li>
+</ul>
+</li>
+</ul>
+<p><img src="/images/remote-administration/vnc.png" alt></p>
+<br>
+<h2 id="新的vnc-服务器安装">➡️新的VNC 服务器安装</h2>
+<h3 id="🟦新版-linux上安装-vnc-服务器">🟦新版-Linux上安装 VNC 服务器</h3>
+<p>2021年 <strong>centos8</strong> 将 <strong>tigerVNC</strong> 进行了升级，把 <strong>1.9</strong> 升级到了 <strong>1.10.1</strong>，这在管理上有改动。</p>
+<p>原来是属于高级配置的管理功能，（把 VNCserver 作为服务自动启动、多用户同时使用）简化了。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># dnf -y install tigervnc-server</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># rpm -qi tigervnc-server</span><br><span class="line"># rpm -qc tigervnc-server</span><br><span class="line"># rpm -ql tigervnc-server | grep bin</span><br></pre></td></tr></table></figure>
+<br>
+<h3 id="🟦新版-考察安装结果">🟦新版-考察安装结果</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># vncserver --help</span><br><span class="line">vncserver has been replaced by a systemd unit.</span><br><span class="line">Please read /usr/share/doc/tigervnc/HOWTO.md for more information.</span><br></pre></td></tr></table></figure>
+<p>这里说可以通过 <code>systemctl</code> 来控制，在早期版本可以很简单的去运行 vncserver，而要将其做成服务，做成 unit 还是需要好几个配置的，新的版本做出了简化。</p>
+<br>
+<h3 id="🟦新版-配置vnc服务器">🟦新版-配置VNC服务器</h3>
+<p><strong>1.添加用户映射</strong></p>
+<p>用户映射的意思：在 VNC 里面允许有多个桌面，每个桌面有个桌面编号，下面是1号桌面与 root 做管理，2号桌面则与 tom 做关联。</p>
+<blockquote style="border-left: 5px solid #6CA2F9; background-color: #ECF3FE; padding: 10px;">
+<div style="color: #24687D; font-weight: bold;height: 20px;height:25px;">🔵 注意：</div> 
+    <p style=" text-indent: 2em;">vnc用自己的密码体系</p></blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/tigervnc/vncserver.users</span><br><span class="line">:1=root</span><br><span class="line">:2=tom</span><br></pre></td></tr></table></figure>
+<blockquote style="border-left: 5px solid #f0ab00; background-color: #fdf7e7; padding: 10px;">
+<div style="color: #7d643f; font-weight: bold;height: 20px;height:25px;">🟡 重要：</div> 
+    <p style=" text-indent: 2em;">这里面的账户需要你本地Linux系统中有一样命名账户
+    。</p>
+    <p style=" text-indent: 2em;">这里面的账户密码是自己的密码，和操作系统的密码是不一样的。</p></blockquote>
+<p><strong>监听端口：</strong><code>590+桌面号</code></p>
+<p>做了关联之后，<code>客户端 IP:590+桌面号</code> 来添加。</p>
+<p>这样就做到了以不同的桌面监听不同的端口号。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># netstat -anp | grep vnc | grep ^top</span><br><span class="line">Proto	Local Address	Foreign Address 	State		PID/Program</span><br><span class="line">tcp     0.0.0.0:5901    0.0.0.0:*           LISTEN      34189/Xvnc</span><br><span class="line">tcp     0.0.0.0:5902    0.0.0.0:*           LISTEN      34143/Xvnc</span><br><span class="line">tcp6    :::5901         :::*                LISTEN      34189/Xvnc</span><br><span class="line">tcp6    :::5902         :::*                LISTEN      35143/Xvnc</span><br></pre></td></tr></table></figure>
+<p><strong>2.配置Xvnc的选项</strong></p>
+<ul>
+<li>
+<p><strong>配置文件应用次序：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">/etc/tigervnc/vncserver-config-default</span><br><span class="line">            ↓</span><br><span class="line">$HOME/.vnc/config</span><br><span class="line">            ↓</span><br><span class="line">/etc/tigervnc/vncserver-config-madatory</span><br><span class="line">从优先级来说是反着来的</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>最简单的配置：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># vi /etc/tigervnc/vncserver-config-default</span><br><span class="line">  session=gnome</span><br><span class="line">  </span><br><span class="line"># man vncserver</span><br><span class="line"># man xvnc</span><br></pre></td></tr></table></figure>
+<p>这就是说，用户登陆后使用的是gnome的桌面。</p>
+</li>
+</ul>
+<p><strong>3.设置VNC密码</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># id -un</span><br><span class="line">  root</span><br><span class="line"></span><br><span class="line"># vncpasswd</span><br><span class="line">  Password: 输入密码</span><br><span class="line">  Verify: 再次输入密码</span><br><span class="line">  Would you like lo enLer a view-only password (y/n)? n</span><br><span class="line">  A view-only password is not used</span><br></pre></td></tr></table></figure>
+<p>VNC 设置用户的密码，这需要在当前登陆用户来进行.</p>
+<p>如：设置 VNC 中 root 的密码，那么当前操作系统的用户就是 root。密码会保存在家目录一个名为 vnc 的隐藏文件夹当中。</p>
+<p><strong>4.启动Tigervnc服务器</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># systemctl start vncserver@:1.serice</span><br><span class="line"># systemctl enable vncserver@:1.serice</span><br><span class="line"></span><br><span class="line"># systemctl start vncserver@:2.serice</span><br><span class="line"># systemctl enable vncserver@:2.serice</span><br></pre></td></tr></table></figure>
+<p>这启动了第一个桌面，第二个桌面。</p>
+<p><strong>5.配置防火墙</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># firewall-cmd --add-service=vnc-server --permanent</span><br><span class="line"># firewall-cmd --reload</span><br><span class="line"># firewall-cmd --info-service=vnc-server</span><br><span class="line">  vnc-server</span><br><span class="line">     ports: 5900-5903/tcp</span><br><span class="line">     protocols:</span><br><span class="line">  ... 略 ...</span><br></pre></td></tr></table></figure>
+<br>
+<h2 id="旧版vnc-服务器安装">➡️旧版VNC 服务器安装</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># yum -y install tigervnc-server</span><br><span class="line"># rpm -qi tigervnc-server</span><br><span class="line"># rpm -qc tigervnc-server</span><br><span class="line">  /etc/sysconfig/vncservers</span><br></pre></td></tr></table></figure>
+<br>
+<h2 id="vnc-服务器最简单的配置">➡️VNC 服务器最简单的配置</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># vncserver</span><br><span class="line"># vncserver -list</span><br><span class="line"></span><br><span class="line"># ps aux | grep vnc</span><br><span class="line"># netstat -anp | grep vnc</span><br></pre></td></tr></table></figure>
+<p>第一次执行vnc的时候，不需要一些额外的参数。</p>
+<br>
+<h2 id="vnc客户端">➡️VNC客户端</h2>
+<h3 id="🟦windows上的vnc客户机">🟦Windows上的VNC客户机</h3>
+<ul>
+<li>
+<p><strong>常见的客户端</strong></p>
+<ul>
+<li>Realvnc viewer</li>
+<li>Tightvnc viewer</li>
+</ul>
+</li>
+<li>
+<p><strong>下载地址</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://www.realvnc.com/en/connect/download/vnc/</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<br>
+<h3 id="🟦vnc链接测试-新版本客户端">🟦VNC链接测试-新版本客户端</h3>
+<p><strong>服务器标识</strong></p>
+<ul>
+<li><code>IP地址:桌面编号</code></li>
+<li><code>IP地址:网络端口号</code></li>
+</ul>
+<br>
+<h2 id="作为服务自动启动">➡️作为服务自动启动</h2>
+<p>VNC的高级设置：VNC Server作为服务自动启动、多用户同时访问、通过SSH加密流量。</p>
+<p>如果是经常去访问 VNC 可以把 VNC Server自动其启动，这样即使是服务器自动启动了，那么也能很快的连接上去。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># rpm -ql tigervnc-server</span><br><span class="line">  ... ...</span><br><span class="line">  /usr/lib/systemd/system/vncserver@.service</span><br><span class="line">  ... ...</span><br><span class="line"># cp /usr/lib/systemd/system/vncserver@.service \</span><br><span class="line">     /etc/systemd/system/vncserver@:1.service</span><br><span class="line"># vi /etc/systemd/system/vncserver@\:1.service</span><br><span class="line">  ... ...</span><br><span class="line">  #ExecStart=/usr/bin/vncserver_wrapper &lt;USER&gt; %i</span><br><span class="line">  ExecStart=/usr/bin/vncserver_wrapper root %i</span><br><span class="line"></span><br><span class="line"># systemctl deamon-reload</span><br><span class="line"># systemctl start vncserver@\:1.service</span><br><span class="line"># systemctl enable vucserver@:1.service</span><br></pre></td></tr></table></figure>
+<br>
+<h2 id="多用户同时访问">➡️多用户同时访问</h2>
+<p><strong>Alice使用桌面1</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># cp /usr/lib/systemd/system.cnvserver@.service \</span><br><span class="line">  /etc/systemd/system/vncserver-alice@.service</span><br><span class="line"># vi /etc/systemd/system/vncserveer-alice@.service</span><br><span class="line">  ... ...</span><br><span class="line">  ExecStart=/usr/bin/vncserver_wrapper alice %i</span><br><span class="line">  ... ...</span><br><span class="line"># systemctl start vncserver-alice@:1.service</span><br><span class="line"># systemctl eanble vncserver-alice@:1.service</span><br></pre></td></tr></table></figure>
+<p><strong>Bob使用桌面2</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># cp /usr/lib/systemd/system.cnvserver@.service \</span><br><span class="line">  /etc/systemd/system/vncserver-bob@.service</span><br><span class="line"># vi /etc/systemd/system/vncserveer-bob@.service</span><br><span class="line">  ... ...</span><br><span class="line">  ExecStart=/usr/bin/vncserver_wrapper alice %i</span><br><span class="line">  ... ...</span><br><span class="line"># systemctl start vncserver-bob@:2.service</span><br><span class="line"># systemctl eanble vncserver-bob@:2.service</span><br></pre></td></tr></table></figure>
+<p>同时访问有两种模式，第一种是多人访问同一个桌面编号的情况，这种情况很简单。</p>
+<p>或者每个人访问不同的桌面，这就需要配置不同的网络端口。</p>
+<br>
+<h2 id="通过ssh加密流量">➡️通过SSH加密流量</h2>
+<h3 id="🟦vnc传输的安全性">🟦VNC传输的安全性</h3>
+<p><img src="/images/remote-administration/vnc1.png" alt></p>
+<p>VNC 客户端 与 tigerVNC 之间的网络流量是不加密的，也就是通过明文来传递，这就有安全问题，因为黑客有可能截获还原用户操作的过程。</p>
+<p>有一些 VNC 的服务器，支 持VNC 的加密。</p>
+<br>
+<h3 id="🟦vnc-ssh隧道">🟦VNC+SSH隧道</h3>
+<p><img src="/images/remote-administration/vnc2.png" alt></p>
+<p>对于 tigerVNC 来说，可以使用SSH来结合一下。</p>
+<p>先通过 SSH 来构建一条安全隧道，然后在其中去传递VNC的信息，这是tigerVNC的标准做法。</p>
+<p>**工作原理：**右边是SSH的服务器，比如说是openssh-server,先会和左边的客户端putty建立起连接构建一个安全通道，在左边的windows主机上，假如putty主机的ID是3712，通过终端上的命令 <code>netstat -ano | find “5901”</code> 可以看到查看3712进程在监听5901的端口。左边VNC客户机的进程是10092,它的访问地址是 localhost:1 也就是访问本地一号桌面，也就是访问5901端口，5901又是putty在监听。</p>
+<p>这些流量会通过安全隧道发送到右边的服务器端，这里面服务器的SSH的端口是5630，会把收到的请求转发给本地监听5901的进程，这个进程是1389。这样5630建立起来会话，VNC的请求会通过隧道转发给VNCserver收到。</p>
+<p>这种VNC+SSH的工作原理，是SSH的客户端和SSH的服务器之间先建立起安全的隧道，VNC客户端的流量首先会传递给本地是SSH客户机，然后转发SSH服务器，随后给VNCserver。</p>
+<p>这个方案的关键点就是SSH客户机。</p>
+<br>
+<h3 id="🟦配置">🟦配置</h3>
+<p>启动SSH的客户端软件指定SSH隧道，在SSH中输入监听的端口 <code>5901</code>，然后设置转发的远程的 <code>192.168.10.10:5901</code> 。</p>
+<p>打开 VNC 的客户端，这时候输入的是 <code>localhost:1</code> 这实际上是SSH客户端监听相关进程的端口。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://example.com">chsucstar</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2024/01/07/Linux%E8%BF%9C%E7%A8%8B%E8%AE%BF%E9%97%AE%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86/">http://example.com/2024/01/07/Linux%E8%BF%9C%E7%A8%8B%E8%AE%BF%E9%97%AE%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">Hexo</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/VNC/">VNC</a><a class="post-meta__tags" href="/tags/XRDP/">XRDP</a></div><div class="post_share"><div class="social-share" data-image="/%5Cimg%5CAvatar.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2024/01/04/Linux%E8%BF%9C%E7%A8%8B%E8%AE%BF%E9%97%AE%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86/" title="Linux远程访问第一部分"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Linux远程访问第一部分</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/%5Cimg%5CAvatar.jpg" onerror="this.onerror=null;this.src='/img/Avatar.jpg'" alt="avatar"/></div><div class="author-info__name">chsucstar</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">⬆️VNC概念与原理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-vnc"><span class="toc-number">1.1.</span> <span class="toc-text">➡️什么是 VNC</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vnc-%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86"><span class="toc-number">1.2.</span> <span class="toc-text">➡️VNC 基本原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B0%E7%9A%84vnc-%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E8%A3%85"><span class="toc-number">1.3.</span> <span class="toc-text">➡️新的VNC 服务器安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%9F%A6%E6%96%B0%E7%89%88-linux%E4%B8%8A%E5%AE%89%E8%A3%85-vnc-%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-number">1.3.1.</span> <span class="toc-text">🟦新版-Linux上安装 VNC 服务器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%9F%A6%E6%96%B0%E7%89%88-%E8%80%83%E5%AF%9F%E5%AE%89%E8%A3%85%E7%BB%93%E6%9E%9C"><span class="toc-number">1.3.2.</span> <span class="toc-text">🟦新版-考察安装结果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%9F%A6%E6%96%B0%E7%89%88-%E9%85%8D%E7%BD%AEvnc%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-number">1.3.3.</span> <span class="toc-text">🟦新版-配置VNC服务器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A7%E7%89%88vnc-%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E8%A3%85"><span class="toc-number">1.4.</span> <span class="toc-text">➡️旧版VNC 服务器安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vnc-%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%9C%80%E7%AE%80%E5%8D%95%E7%9A%84%E9%85%8D%E7%BD%AE"><span class="toc-number">1.5.</span> <span class="toc-text">➡️VNC 服务器最简单的配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vnc%E5%AE%A2%E6%88%B7%E7%AB%AF"><span class="toc-number">1.6.</span> <span class="toc-text">➡️VNC客户端</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%9F%A6windows%E4%B8%8A%E7%9A%84vnc%E5%AE%A2%E6%88%B7%E6%9C%BA"><span class="toc-number">1.6.1.</span> <span class="toc-text">🟦Windows上的VNC客户机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%9F%A6vnc%E9%93%BE%E6%8E%A5%E6%B5%8B%E8%AF%95-%E6%96%B0%E7%89%88%E6%9C%AC%E5%AE%A2%E6%88%B7%E7%AB%AF"><span class="toc-number">1.6.2.</span> <span class="toc-text">🟦VNC链接测试-新版本客户端</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%9C%E4%B8%BA%E6%9C%8D%E5%8A%A1%E8%87%AA%E5%8A%A8%E5%90%AF%E5%8A%A8"><span class="toc-number">1.7.</span> <span class="toc-text">➡️作为服务自动启动</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E7%94%A8%E6%88%B7%E5%90%8C%E6%97%B6%E8%AE%BF%E9%97%AE"><span class="toc-number">1.8.</span> <span class="toc-text">➡️多用户同时访问</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%9A%E8%BF%87ssh%E5%8A%A0%E5%AF%86%E6%B5%81%E9%87%8F"><span class="toc-number">1.9.</span> <span class="toc-text">➡️通过SSH加密流量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%9F%A6vnc%E4%BC%A0%E8%BE%93%E7%9A%84%E5%AE%89%E5%85%A8%E6%80%A7"><span class="toc-number">1.9.1.</span> <span class="toc-text">🟦VNC传输的安全性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%9F%A6vnc-ssh%E9%9A%A7%E9%81%93"><span class="toc-number">1.9.2.</span> <span class="toc-text">🟦VNC+SSH隧道</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%9F%A6%E9%85%8D%E7%BD%AE"><span class="toc-number">1.9.3.</span> <span class="toc-text">🟦配置</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/01/07/Linux%E8%BF%9C%E7%A8%8B%E8%AE%BF%E9%97%AE%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86/" title="Linux远程访问第二部分">Linux远程访问第二部分</a><time datetime="2024-01-07T04:27:44.000Z" title="发表于 2024-01-07 12:27:44">2024-01-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/01/04/Linux%E8%BF%9C%E7%A8%8B%E8%AE%BF%E9%97%AE%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86/" title="Linux远程访问第一部分">Linux远程访问第一部分</a><time datetime="2024-01-04T04:03:53.000Z" title="发表于 2024-01-04 12:03:53">2024-01-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/01/03/subnetting/" title="subnetting">subnetting</a><time datetime="2024-01-03T10:33:26.000Z" title="发表于 2024-01-03 18:33:26">2024-01-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/01/03/Internet-Protocol-Address/" title="Internet-Protocol-Address">Internet-Protocol-Address</a><time datetime="2024-01-03T03:49:42.000Z" title="发表于 2024-01-03 11:49:42">2024-01-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/01/01/new2024/" title="new2024">new2024</a><time datetime="2024-01-01T05:57:37.000Z" title="发表于 2024-01-01 13:57:37">2024-01-01</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By chsucstar</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
