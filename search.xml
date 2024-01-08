@@ -393,18 +393,16 @@ I hope.</p>
   <entry>
     <title>Linux远程访问第二部分</title>
     <url>/2024/01/07/Linux%E8%BF%9C%E7%A8%8B%E8%AE%BF%E9%97%AE%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86/</url>
-    <content><![CDATA[<h1>⬆️VNC概念与原理</h1>
-<p>Linux 大多数情况下都是远程进行管理的，当在管理的过程中很少会用到图形界面，多数情况下用到的是 ssh 连接服务器。</p>
+    <content><![CDATA[<h1 id="⬆️VNC概念与原理"><a href="#⬆️VNC概念与原理" class="headerlink" title="⬆️VNC概念与原理"></a>⬆️VNC概念与原理</h1><p>Linux 大多数情况下都是远程进行管理的，当在管理的过程中很少会用到图形界面，多数情况下用到的是 ssh 连接服务器。</p>
 <p>有的时候使用图形界面会方便一些，比如说甲骨文的数据库的安装。</p>
 <br>
-<h2 id="什么是-vnc">➡️什么是 VNC</h2>
-<p>VNC 允许我们开启一个远程的会话来连接，这样就能远程访问图形界面了。</p>
+
+<h2 id="➡️什么是-VNC"><a href="#➡️什么是-VNC" class="headerlink" title="➡️什么是 VNC"></a>➡️什么是 VNC</h2><p>VNC 允许我们开启一个远程的会话来连接，这样就能远程访问图形界面了。</p>
 <ul>
 <li><strong>Virtual Network Console</strong></li>
 <li><strong>VNC 是一个自由开源软件</strong></li>
 <li><strong>目的：让用户可以远程访问服务器的桌面环境</strong></li>
-<li><strong>服务器包括：</strong>
-<ul>
+<li><strong>服务器包括：</strong><ul>
 <li>Linux、Unix、FreeBSD</li>
 <li>Windows</li>
 <li>…</li>
@@ -413,16 +411,14 @@ I hope.</p>
 <li><strong>很多平台均有 VNC viewer客户端</strong></li>
 </ul>
 <br>
-<h2 id="vnc-基本原理">➡️VNC 基本原理</h2>
-<ul>
-<li><strong>两部分组成：</strong>
-<ul>
+
+<h2 id="➡️VNC-基本原理"><a href="#➡️VNC-基本原理" class="headerlink" title="➡️VNC 基本原理"></a>➡️VNC 基本原理</h2><ul>
+<li><strong>两部分组成：</strong><ul>
 <li>服务端的应用程序   vncserver</li>
 <li>客户端的应用程序   vncviewer</li>
 </ul>
 </li>
-<li><strong>工作原理</strong>
-<ul>
+<li><strong>工作原理</strong><ul>
 <li>在服务器端启动 VNC Server</li>
 <li>VNC客户端通过浏览器或 VNC Viewer 连接至 VNC Server</li>
 <li>VNC Server 传送对话窗口至客户端，要求输入密码，以及存取的 VNC Server 显示设备。</li>
@@ -432,118 +428,144 @@ I hope.</p>
 </ul>
 </li>
 </ul>
-<p><img src="/images/remote-administration/vnc.png" alt></p>
+<p><img src="/images/remote-administration/vnc.png"></p>
 <br>
-<h2 id="新的vnc-服务器安装">➡️新的VNC 服务器安装</h2>
-<h3 id="🟦新版-linux上安装-vnc-服务器">🟦新版-Linux上安装 VNC 服务器</h3>
-<p>2021年 <strong>centos8</strong> 将 <strong>tigerVNC</strong> 进行了升级，把 <strong>1.9</strong> 升级到了 <strong>1.10.1</strong>，这在管理上有改动。</p>
+
+<h2 id="➡️新的VNC-服务器安装"><a href="#➡️新的VNC-服务器安装" class="headerlink" title="➡️新的VNC 服务器安装"></a>➡️新的VNC 服务器安装</h2><h3 id="🟦新版-Linux上安装-VNC-服务器"><a href="#🟦新版-Linux上安装-VNC-服务器" class="headerlink" title="🟦新版-Linux上安装 VNC 服务器"></a>🟦新版-Linux上安装 VNC 服务器</h3><p>2021年 <strong>centos8</strong> 将 <strong>tigerVNC</strong> 进行了升级，把 <strong>1.9</strong> 升级到了 <strong>1.10.1</strong>，这在管理上有改动。</p>
 <p>原来是属于高级配置的管理功能，（把 VNCserver 作为服务自动启动、多用户同时使用）简化了。</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># dnf -y install tigervnc-server</span><br></pre></td></tr></table></figure>
+
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># rpm -qi tigervnc-server</span><br><span class="line"># rpm -qc tigervnc-server</span><br><span class="line"># rpm -ql tigervnc-server | grep bin</span><br></pre></td></tr></table></figure>
+
 <br>
-<h3 id="🟦新版-考察安装结果">🟦新版-考察安装结果</h3>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># vncserver --help</span><br><span class="line">vncserver has been replaced by a systemd unit.</span><br><span class="line">Please read /usr/share/doc/tigervnc/HOWTO.md for more information.</span><br></pre></td></tr></table></figure>
+
+<h3 id="🟦新版-考察安装结果"><a href="#🟦新版-考察安装结果" class="headerlink" title="🟦新版-考察安装结果"></a>🟦新版-考察安装结果</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># vncserver --help</span><br><span class="line">vncserver has been replaced by a systemd unit.</span><br><span class="line">Please read /usr/share/doc/tigervnc/HOWTO.md for more information.</span><br></pre></td></tr></table></figure>
+
 <p>这里说可以通过 <code>systemctl</code> 来控制，在早期版本可以很简单的去运行 vncserver，而要将其做成服务，做成 unit 还是需要好几个配置的，新的版本做出了简化。</p>
 <br>
-<h3 id="🟦新版-配置vnc服务器">🟦新版-配置VNC服务器</h3>
-<p><strong>1.添加用户映射</strong></p>
+
+<h3 id="🟦新版-配置VNC服务器"><a href="#🟦新版-配置VNC服务器" class="headerlink" title="🟦新版-配置VNC服务器"></a>🟦新版-配置VNC服务器</h3><p><strong>1.添加用户映射</strong></p>
 <p>用户映射的意思：在 VNC 里面允许有多个桌面，每个桌面有个桌面编号，下面是1号桌面与 root 做管理，2号桌面则与 tom 做关联。</p>
 <blockquote style="border-left: 5px solid #6CA2F9; background-color: #ECF3FE; padding: 10px;">
 <div style="color: #24687D; font-weight: bold;height: 20px;height:25px;">🔵 注意：</div> 
     <p style=" text-indent: 2em;">vnc用自己的密码体系</p></blockquote>
+
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vi /etc/tigervnc/vncserver.users</span><br><span class="line">:1=root</span><br><span class="line">:2=tom</span><br></pre></td></tr></table></figure>
+
 <blockquote style="border-left: 5px solid #f0ab00; background-color: #fdf7e7; padding: 10px;">
 <div style="color: #7d643f; font-weight: bold;height: 20px;height:25px;">🟡 重要：</div> 
     <p style=" text-indent: 2em;">这里面的账户需要你本地Linux系统中有一样命名账户
     。</p>
     <p style=" text-indent: 2em;">这里面的账户密码是自己的密码，和操作系统的密码是不一样的。</p></blockquote>
+
 <p><strong>监听端口：</strong><code>590+桌面号</code></p>
 <p>做了关联之后，<code>客户端 IP:590+桌面号</code> 来添加。</p>
 <p>这样就做到了以不同的桌面监听不同的端口号。</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># netstat -anp | grep vnc | grep ^top</span><br><span class="line">Proto	Local Address	Foreign Address 	State		PID/Program</span><br><span class="line">tcp     0.0.0.0:5901    0.0.0.0:*           LISTEN      34189/Xvnc</span><br><span class="line">tcp     0.0.0.0:5902    0.0.0.0:*           LISTEN      34143/Xvnc</span><br><span class="line">tcp6    :::5901         :::*                LISTEN      34189/Xvnc</span><br><span class="line">tcp6    :::5902         :::*                LISTEN      35143/Xvnc</span><br></pre></td></tr></table></figure>
+
 <p><strong>2.配置Xvnc的选项</strong></p>
 <ul>
-<li>
-<p><strong>配置文件应用次序：</strong></p>
+<li><p><strong>配置文件应用次序：</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/etc/tigervnc/vncserver-config-default</span><br><span class="line">            ↓</span><br><span class="line">$HOME/.vnc/config</span><br><span class="line">            ↓</span><br><span class="line">/etc/tigervnc/vncserver-config-madatory</span><br><span class="line">从优先级来说是反着来的</span><br></pre></td></tr></table></figure>
 </li>
-<li>
-<p><strong>最简单的配置：</strong></p>
+<li><p><strong>最简单的配置：</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># vi /etc/tigervnc/vncserver-config-default</span><br><span class="line">  session=gnome</span><br><span class="line">  </span><br><span class="line"># man vncserver</span><br><span class="line"># man xvnc</span><br></pre></td></tr></table></figure>
+
 <p>这就是说，用户登陆后使用的是gnome的桌面。</p>
 </li>
 </ul>
 <p><strong>3.设置VNC密码</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># id -un</span><br><span class="line">  root</span><br><span class="line"></span><br><span class="line"># vncpasswd</span><br><span class="line">  Password: 输入密码</span><br><span class="line">  Verify: 再次输入密码</span><br><span class="line">  Would you like lo enLer a view-only password (y/n)? n</span><br><span class="line">  A view-only password is not used</span><br></pre></td></tr></table></figure>
+
 <p>VNC 设置用户的密码，这需要在当前登陆用户来进行.</p>
 <p>如：设置 VNC 中 root 的密码，那么当前操作系统的用户就是 root。密码会保存在家目录一个名为 vnc 的隐藏文件夹当中。</p>
 <p><strong>4.启动Tigervnc服务器</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># systemctl start vncserver@:1.serice</span><br><span class="line"># systemctl enable vncserver@:1.serice</span><br><span class="line"></span><br><span class="line"># systemctl start vncserver@:2.serice</span><br><span class="line"># systemctl enable vncserver@:2.serice</span><br></pre></td></tr></table></figure>
+
 <p>这启动了第一个桌面，第二个桌面。</p>
 <p><strong>5.配置防火墙</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># firewall-cmd --add-service=vnc-server --permanent</span><br><span class="line"># firewall-cmd --reload</span><br><span class="line"># firewall-cmd --info-service=vnc-server</span><br><span class="line">  vnc-server</span><br><span class="line">     ports: 5900-5903/tcp</span><br><span class="line">     protocols:</span><br><span class="line">  ... 略 ...</span><br></pre></td></tr></table></figure>
+
 <br>
-<h2 id="旧版vnc-服务器安装">➡️旧版VNC 服务器安装</h2>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># yum -y install tigervnc-server</span><br><span class="line"># rpm -qi tigervnc-server</span><br><span class="line"># rpm -qc tigervnc-server</span><br><span class="line">  /etc/sysconfig/vncservers</span><br></pre></td></tr></table></figure>
+
+<h2 id="➡️旧版VNC-服务器安装"><a href="#➡️旧版VNC-服务器安装" class="headerlink" title="➡️旧版VNC 服务器安装"></a>➡️旧版VNC 服务器安装</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># yum -y install tigervnc-server</span><br><span class="line"># rpm -qi tigervnc-server</span><br><span class="line"># rpm -qc tigervnc-server</span><br><span class="line">  /etc/sysconfig/vncservers</span><br></pre></td></tr></table></figure>
+
 <br>
-<h2 id="vnc-服务器最简单的配置">➡️VNC 服务器最简单的配置</h2>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># vncserver</span><br><span class="line"># vncserver -list</span><br><span class="line"></span><br><span class="line"># ps aux | grep vnc</span><br><span class="line"># netstat -anp | grep vnc</span><br></pre></td></tr></table></figure>
+
+<h2 id="➡️VNC-服务器最简单的配置"><a href="#➡️VNC-服务器最简单的配置" class="headerlink" title="➡️VNC 服务器最简单的配置"></a>➡️VNC 服务器最简单的配置</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># vncserver</span><br><span class="line"># vncserver -list</span><br><span class="line"></span><br><span class="line"># ps aux | grep vnc</span><br><span class="line"># netstat -anp | grep vnc</span><br></pre></td></tr></table></figure>
+
 <p>第一次执行vnc的时候，不需要一些额外的参数。</p>
 <br>
-<h2 id="vnc客户端">➡️VNC客户端</h2>
-<h3 id="🟦windows上的vnc客户机">🟦Windows上的VNC客户机</h3>
-<ul>
-<li>
-<p><strong>常见的客户端</strong></p>
+
+<h2 id="➡️VNC客户端"><a href="#➡️VNC客户端" class="headerlink" title="➡️VNC客户端"></a>➡️VNC客户端</h2><h3 id="🟦Windows上的VNC客户机"><a href="#🟦Windows上的VNC客户机" class="headerlink" title="🟦Windows上的VNC客户机"></a>🟦Windows上的VNC客户机</h3><ul>
+<li><p><strong>常见的客户端</strong></p>
 <ul>
 <li>Realvnc viewer</li>
 <li>Tightvnc viewer</li>
 </ul>
 </li>
-<li>
-<p><strong>下载地址</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">https://www.realvnc.com/en/connect/download/vnc/</span><br></pre></td></tr></table></figure>
-</li>
+<li><p><strong>下载地址</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">https://www.realvnc.com/en/connect/download/vnc/</span><br></pre></td></tr></table></figure></li>
 </ul>
 <br>
-<h3 id="🟦vnc链接测试-新版本客户端">🟦VNC链接测试-新版本客户端</h3>
-<p><strong>服务器标识</strong></p>
+
+<h3 id="🟦VNC链接测试-新版本客户端"><a href="#🟦VNC链接测试-新版本客户端" class="headerlink" title="🟦VNC链接测试-新版本客户端"></a>🟦VNC链接测试-新版本客户端</h3><p><strong>服务器标识</strong></p>
 <ul>
 <li><code>IP地址:桌面编号</code></li>
 <li><code>IP地址:网络端口号</code></li>
 </ul>
 <br>
-<h2 id="作为服务自动启动">➡️作为服务自动启动</h2>
-<p>VNC的高级设置：VNC Server作为服务自动启动、多用户同时访问、通过SSH加密流量。</p>
+
+<h2 id="➡️作为服务自动启动"><a href="#➡️作为服务自动启动" class="headerlink" title="➡️作为服务自动启动"></a>➡️作为服务自动启动</h2><p>VNC的高级设置：VNC Server作为服务自动启动、多用户同时访问、通过SSH加密流量。</p>
 <p>如果是经常去访问 VNC 可以把 VNC Server自动其启动，这样即使是服务器自动启动了，那么也能很快的连接上去。</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># rpm -ql tigervnc-server</span><br><span class="line">  ... ...</span><br><span class="line">  /usr/lib/systemd/system/vncserver@.service</span><br><span class="line">  ... ...</span><br><span class="line"># cp /usr/lib/systemd/system/vncserver@.service \</span><br><span class="line">     /etc/systemd/system/vncserver@:1.service</span><br><span class="line"># vi /etc/systemd/system/vncserver@\:1.service</span><br><span class="line">  ... ...</span><br><span class="line">  #ExecStart=/usr/bin/vncserver_wrapper &lt;USER&gt; %i</span><br><span class="line">  ExecStart=/usr/bin/vncserver_wrapper root %i</span><br><span class="line"></span><br><span class="line"># systemctl deamon-reload</span><br><span class="line"># systemctl start vncserver@\:1.service</span><br><span class="line"># systemctl enable vucserver@:1.service</span><br></pre></td></tr></table></figure>
+
 <br>
-<h2 id="多用户同时访问">➡️多用户同时访问</h2>
-<p><strong>Alice使用桌面1</strong></p>
+
+<h2 id="➡️多用户同时访问"><a href="#➡️多用户同时访问" class="headerlink" title="➡️多用户同时访问"></a>➡️多用户同时访问</h2><p><strong>Alice使用桌面1</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># cp /usr/lib/systemd/system.cnvserver@.service \</span><br><span class="line">  /etc/systemd/system/vncserver-alice@.service</span><br><span class="line"># vi /etc/systemd/system/vncserveer-alice@.service</span><br><span class="line">  ... ...</span><br><span class="line">  ExecStart=/usr/bin/vncserver_wrapper alice %i</span><br><span class="line">  ... ...</span><br><span class="line"># systemctl start vncserver-alice@:1.service</span><br><span class="line"># systemctl eanble vncserver-alice@:1.service</span><br></pre></td></tr></table></figure>
+
 <p><strong>Bob使用桌面2</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># cp /usr/lib/systemd/system.cnvserver@.service \</span><br><span class="line">  /etc/systemd/system/vncserver-bob@.service</span><br><span class="line"># vi /etc/systemd/system/vncserveer-bob@.service</span><br><span class="line">  ... ...</span><br><span class="line">  ExecStart=/usr/bin/vncserver_wrapper alice %i</span><br><span class="line">  ... ...</span><br><span class="line"># systemctl start vncserver-bob@:2.service</span><br><span class="line"># systemctl eanble vncserver-bob@:2.service</span><br></pre></td></tr></table></figure>
+
 <p>同时访问有两种模式，第一种是多人访问同一个桌面编号的情况，这种情况很简单。</p>
 <p>或者每个人访问不同的桌面，这就需要配置不同的网络端口。</p>
 <br>
-<h2 id="通过ssh加密流量">➡️通过SSH加密流量</h2>
-<h3 id="🟦vnc传输的安全性">🟦VNC传输的安全性</h3>
-<p><img src="/images/remote-administration/vnc1.png" alt></p>
+
+<h2 id="➡️通过SSH加密流量"><a href="#➡️通过SSH加密流量" class="headerlink" title="➡️通过SSH加密流量"></a>➡️通过SSH加密流量</h2><h3 id="🟦VNC传输的安全性"><a href="#🟦VNC传输的安全性" class="headerlink" title="🟦VNC传输的安全性"></a>🟦VNC传输的安全性</h3><p><img src="/images/remote-administration/vnc1.png"></p>
 <p>VNC 客户端 与 tigerVNC 之间的网络流量是不加密的，也就是通过明文来传递，这就有安全问题，因为黑客有可能截获还原用户操作的过程。</p>
 <p>有一些 VNC 的服务器，支 持VNC 的加密。</p>
 <br>
-<h3 id="🟦vnc-ssh隧道">🟦VNC+SSH隧道</h3>
-<p><img src="/images/remote-administration/vnc2.png" alt></p>
+
+<h3 id="🟦VNC-SSH隧道"><a href="#🟦VNC-SSH隧道" class="headerlink" title="🟦VNC+SSH隧道"></a>🟦VNC+SSH隧道</h3><p><img src="/images/remote-administration/vnc2.png"></p>
 <p>对于 tigerVNC 来说，可以使用SSH来结合一下。</p>
-<p>先通过 SSH 来构建一条安全隧道，然后在其中去传递VNC的信息，这是tigerVNC的标准做法。</p>
-<p>**工作原理：**右边是SSH的服务器，比如说是openssh-server,先会和左边的客户端putty建立起连接构建一个安全通道，在左边的windows主机上，假如putty主机的ID是3712，通过终端上的命令 <code>netstat -ano | find “5901”</code> 可以看到查看3712进程在监听5901的端口。左边VNC客户机的进程是10092,它的访问地址是 localhost:1 也就是访问本地一号桌面，也就是访问5901端口，5901又是putty在监听。</p>
-<p>这些流量会通过安全隧道发送到右边的服务器端，这里面服务器的SSH的端口是5630，会把收到的请求转发给本地监听5901的进程，这个进程是1389。这样5630建立起来会话，VNC的请求会通过隧道转发给VNCserver收到。</p>
-<p>这种VNC+SSH的工作原理，是SSH的客户端和SSH的服务器之间先建立起安全的隧道，VNC客户端的流量首先会传递给本地是SSH客户机，然后转发SSH服务器，随后给VNCserver。</p>
+<p>先通过 SSH 来构建一条安全隧道，然后在其中去传递 VNC 的信息，这是 tigerVNC 的标准做法。</p>
+<p><strong>工作原理：</strong>右边是SSH的服务器，比如说是o penssh-server ,先会和左边的客户端 putty 建立起连接构建一个安全通道，在左边的windows主机上，假如putty主机的ID是3712，通过终端上的命令 <code>netstat -ano | find "5901"</code> 可以看到查看3712进程在监听5901的端口。左边 VNC 客户机的进程是10092,它的访问地址是 localhost:1 也就是访问本地一号桌面，也就是访问5901端口，5901又是putty在监听。</p>
+<p>这些流量会通过安全隧道发送到右边的服务器端，这里面服务器的SSH的端口是5630，会把收到的请求转发给本地监听5901的进程，这个进程是1389。这样5630建立起来会话，VNC 的请求会通过隧道转发给 VNCserver 收到。</p>
+<p>这种VNC+SSH的工作原理，是SSH的客户端和SSH的服务器之间先建立起安全的隧道，VNC客户端的流量首先会传递给本地是SSH客户机，然后转发SSH服务器，随后给 VNCserver。</p>
 <p>这个方案的关键点就是SSH客户机。</p>
 <br>
-<h3 id="🟦配置">🟦配置</h3>
-<p>启动SSH的客户端软件指定SSH隧道，在SSH中输入监听的端口 <code>5901</code>，然后设置转发的远程的 <code>192.168.10.10:5901</code> 。</p>
+
+<h3 id="🟦配置"><a href="#🟦配置" class="headerlink" title="🟦配置"></a>🟦配置</h3><p>启动SSH的客户端软件指定SSH隧道，在SSH中输入监听的端口 <code>5901</code>，然后设置转发的远程的 <code>192.168.10.10:5901</code> 。</p>
 <p>打开 VNC 的客户端，这时候输入的是 <code>localhost:1</code> 这实际上是SSH客户端监听相关进程的端口。</p>
+<br>
+
+<h1 id="⬆️远程桌面XRDP"><a href="#⬆️远程桌面XRDP" class="headerlink" title="⬆️远程桌面XRDP"></a>⬆️远程桌面XRDP</h1><h2 id="➡️开源RDP（远程桌面协议）服务器-xrdp"><a href="#➡️开源RDP（远程桌面协议）服务器-xrdp" class="headerlink" title="➡️开源RDP（远程桌面协议）服务器 xrdp"></a>➡️开源RDP（远程桌面协议）服务器 xrdp</h2><p><strong>xrdp提供RDP服务，支持：</strong></p>
+<ul>
+<li>双向剪贴板传输</li>
+<li>音频、驱动器重定向</li>
+<li>TLS加密（默认启用）</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># cat /etc/system-release</span><br><span class="line">  CentOS Linux release 8.1.1911 (Core)</span><br><span class="line"># dnf -y install epel-release</span><br><span class="line"># dnf -y install xrdp</span><br><span class="line"></span><br><span class="line"># systemctl start xrdp</span><br><span class="line"># systemctl enable xrdp</span><br><span class="line"># systemctl status xrdp</span><br><span class="line"></span><br><span class="line"># firewall-cmd --add-service=rdp --permanent</span><br><span class="line"># firewall-cmd --reload</span><br></pre></td></tr></table></figure>
+
+<p>xrdp 采用的是标准的 rdp协议，所以说有多种客户端软件，这样在许多设备都能进行使用。</p>
+<p>可以把远程的文件系统 <code>mount</code> 到本地，默认情况下 rdp 使用的是 <code>TLS加密</code>，这点和 VNC 不同，在 CentOS8 中 xrdp 的安装和使用都比较简单。</p>
+<p>dnf 比 yum 的后端依赖解释器更高一些。</p>
+<blockquote style="border-left: 5px solid #6CA2F9; background-color: #ECF3FE; padding: 10px;">
+<div style="color: #24687D; font-weight: bold;height: 20px;height:25px;">🔵 注意：</div> 
+    <p style=" text-indent: 2em;">如果是在虚拟机vmware上进行实验，可以安装一个驱动，这样性能会好一些</p>
+    <p style=" text-indent: 2em;"><code># dnf list | grep vmware</code></p>
+    <p style=" text-indent: 2em;"><code># dnf -y install xorg-x11-drv-vmware</code></p></blockquote>
 ]]></content>
       <categories>
         <category>Linux服务配置</category>
@@ -551,6 +573,277 @@ I hope.</p>
       <tags>
         <tag>VNC</tag>
         <tag>XRDP</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux远程访问第三部分</title>
+    <url>/2024/01/08/Linux%E8%BF%9C%E7%A8%8B%E8%AE%BF%E9%97%AE%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86/</url>
+    <content><![CDATA[<h1 id="⬆️什么是-X-Window-？"><a href="#⬆️什么是-X-Window-？" class="headerlink" title="⬆️什么是 X-Window ？"></a>⬆️什么是 X-Window ？</h1><ul>
+<li><strong>X Window System 也简称为X、X11或 X-Window</strong></li>
+<li><strong>一种开放源码、跨平台、客户端-服务器计算机软件系统，可在分布式网络环境中提供GUI</strong></li>
+<li><strong>早期用于 Unix 及变体，现在几乎所有的操作系统都能支持与使用</strong></li>
+<li><strong>GNOME和KDE都是以X系统为基础构成的</strong><ul>
+<li>1984年作为斯坦福大学和麻省理工学院合作的Athena项目的一部分而首次开发</li>
+<li>1987年发布了版本11</li>
+<li>1992年至2004年，XFree86是 X Window 系统最被广泛使用的基础平台</li>
+<li>2004年开始，XFree86 不再使用 GPL 许可证 …</li>
+<li>XOrg 逐渐在开源 Unix 风格系统操作中流行 …</li>
+</ul>
+</li>
+</ul>
+<br>
+
+<h2 id="➡️X-Window-基本原理"><a href="#➡️X-Window-基本原理" class="headerlink" title="➡️X-Window 基本原理"></a>➡️X-Window 基本原理</h2><p><img src="/images/remote-administration/xwindow.png"></p>
+<p>X-Window 采用的是 客户机-服务器 模式，也就是CS模式，由两部分组成，</p>
+<br>
+
+<h2 id="➡️X-Window-SSH"><a href="#➡️X-Window-SSH" class="headerlink" title="➡️X-Window + SSH"></a>➡️X-Window + SSH</h2><p><img src="/images/remote-administration/xwindow1.png"></p>
+<p><img src="/images/remote-administration/xwindow2.png"></p>
+<p>远程的保证通讯安全还是通过SSH来构建一个安全通道。</p>
+<h2 id="➡️实验：X-Window-SSH"><a href="#➡️实验：X-Window-SSH" class="headerlink" title="➡️实验：X-Window+SSH"></a>➡️实验：X-Window+SSH</h2><ul>
+<li><strong>下载安装xming</strong></li>
+<li><strong>配置SSH客户端</strong></li>
+</ul>
+<p><img src="/images/remote-administration/xwindow3.png"></p>
+<p>在windows安装有相对应的xming。</p>
+<p>安装完成后配置对应的SSH。</p>
+<p>这时候还要在客户端启动对应的桌面程序。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># dnf group gnome-desktop</span><br><span class="line"># gedit</span><br></pre></td></tr></table></figure>
+
+<p>对X11限制转发则需要对SSH转发进行限制，因为X11是通过SSH来进行的转发的。</p>
+<br>
+
+<h1 id="⬆️Cockpit"><a href="#⬆️Cockpit" class="headerlink" title="⬆️Cockpit"></a>⬆️Cockpit</h1><h2 id="➡️原理与基本功能"><a href="#➡️原理与基本功能" class="headerlink" title="➡️原理与基本功能"></a>➡️原理与基本功能</h2><h3 id="🟦是么是Cockpit？"><a href="#🟦是么是Cockpit？" class="headerlink" title="🟦是么是Cockpit？"></a>🟦是么是Cockpit？</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">https://cockpit-project.org</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>开源的基于web的管理工具，可以执行多种管理服务</strong></li>
+<li><strong>可以对主流的Linux发行版本进行集中式管理</strong></li>
+<li><strong>Cockpit的理想：</strong><ul>
+<li>Cockpit是可发现的</li>
+<li>Cockpit直接与系统交互并做出反应</li>
+<li>Cockpit不需要任何配置或基础架构</li>
+<li>Cockpit不是配置管理</li>
+<li>Cockpit只是项目名称</li>
+<li>Cockpit是zero footprint</li>
+<li>… …</li>
+</ul>
+</li>
+</ul>
+<p>除了cockpit以外基于Web网页管理服务器的还有一些其他的。</p>
+<ul>
+<li><p><strong>webmin</strong></p>
+</li>
+<li><p><strong>CentOS Web Panel</strong></p>
+</li>
+<li><p><strong>Ajenti</strong></p>
+</li>
+<li><p><strong>Froxlor</strong></p>
+</li>
+</ul>
+<p>目前cockpit稍微好一些。</p>
+<p>cockpit是交互的服务器的管理页面，是可以发现的（不用读相关的说明），直接与系统交互进行反映不需要数据库，UI直接反映服务器的状态，使用Linux一样的相同的API可以对系统立即作出反映，不需要做配置和一些基础的架构，安装量小，不是配置管理工具，这仅仅是一个项目名称在界面中是不显示logo的，cockpit认为cockpit仅仅是操作系统的UI而不是web工具，磁盘占用小。</p>
+<br>
+
+<h2 id="➡️Cockpit-部署架构"><a href="#➡️Cockpit-部署架构" class="headerlink" title="➡️Cockpit 部署架构"></a>➡️Cockpit 部署架构</h2><p><img src="/images/remote-administration/cockpit.png"></p>
+<p>模式1：每台Linux都安装有cockpit，管理员通过浏览器分别来进行工作。</p>
+<p>模式2：集中管理，选择任意一台安装有cockpit的服务器，在这上面来安装有仪表盘dashboard的插件，把其他的安装有cockpit的机器，添加注册到仪表盘上，这样就比较方便了，</p>
+<p>模式3：处于安全的考虑，不允许管理员直接与 Linux服务器 来进行直接访问，所以管理员会先进入堡垒机，然后堡垒机代表管理员来访问后面的服务器来管理，这是一种转发的机制，与第二种是不一样的。</p>
+<br>
+
+<h3 id="🟦Cockpit安装"><a href="#🟦Cockpit安装" class="headerlink" title="🟦Cockpit安装"></a>🟦Cockpit安装</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># yum -y install cockpit</span><br><span class="line"># systemctl start cockpit.socket</span><br><span class="line"># systemctl enable cockpit.socket</span><br><span class="line"># firewall-cmd --list-service</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h2 id="➡️存储管理"><a href="#➡️存储管理" class="headerlink" title="➡️存储管理"></a>➡️存储管理</h2><h3 id="🟦实验：Cockpit的存储管理"><a href="#🟦实验：Cockpit的存储管理" class="headerlink" title="🟦实验：Cockpit的存储管理"></a>🟦实验：Cockpit的存储管理</h3><ul>
+<li><strong>安装插件：</strong><ul>
+<li>cockpit-storaged</li>
+</ul>
+</li>
+<li><strong>基本概念：</strong><ul>
+<li>物理存储介质</li>
+<li>分区</li>
+<li>LVM组件：<ul>
+<li>物理卷（Physical Volume , PV）</li>
+<li>卷组 （Volume Group，VG）</li>
+<li>逻辑卷 （Logical Volume，LV）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="/images/remote-administration/cockpit1.png"></p>
+<p>进行存储的管理一定要谨慎，因为一旦误操作成本是很高的。</p>
+<p>实验环境中添加了一块 30GB 的磁盘，准备整个做成PV然后做成VG，把VG划到一个LV里面，做成一个文件系统，同时monut到某个目录中。</p>
+<p>如果cockpit中没有存储管理的功能，那么就需要安装插件。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># rpm -qa | grep cock</span><br><span class="line"># dnf list | grep cockpit</span><br><span class="line"></span><br><span class="line"># dnf -y install cockpit-storage</span><br></pre></td></tr></table></figure>
+
+<p>这样就安装完插件了，刷新页面就可以看到 存储 模块了。</p>
+<p>在 存储 界面中，选择 组卷 去新添加一个卷组， 然后选择新添加的硬盘，这就相当于是创建VG了。</p>
+<p>然后 创建逻辑卷 选择30G全部，然后创建文件系统格式化，自定义mount点，选择引导时自动挂载。</p>
+<br>
+
+<h2 id="➡️仪表盘与虚拟化"><a href="#➡️仪表盘与虚拟化" class="headerlink" title="➡️仪表盘与虚拟化"></a>➡️仪表盘与虚拟化</h2><h3 id="🟦实验：Cockpit的集中管理"><a href="#🟦实验：Cockpit的集中管理" class="headerlink" title="🟦实验：Cockpit的集中管理"></a>🟦实验：Cockpit的集中管理</h3><ul>
+<li><strong>安装插件：</strong><ul>
+<li>cockpit-dashboard</li>
+</ul>
+</li>
+<li><strong>功能：</strong><ul>
+<li>整体视图</li>
+<li>灵活切换</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># dnf -y install cockpit-dashboard</span><br></pre></td></tr></table></figure>
+
+<p>安装完dashboard后需要在网页上先注销登陆，然后重新登陆，这样就能看到仪表板了。</p>
+<br>
+
+<h3 id="🟦实验：Cockpit的KVM虚拟机管理"><a href="#🟦实验：Cockpit的KVM虚拟机管理" class="headerlink" title="🟦实验：Cockpit的KVM虚拟机管理"></a>🟦实验：Cockpit的KVM虚拟机管理</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># dnf -y install cockpit-machines</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>安装插件 cockpit-machines</strong></li>
+<li><strong>功能：</strong><ul>
+<li>管理存储池</li>
+<li>管理网路</li>
+<li>管理虚拟机<ul>
+<li>创建虚拟机</li>
+<li>修改配置</li>
+<li>删除虚拟机</li>
+<li>电源管理</li>
+<li>控制台访问<ul>
+<li>VNC</li>
+<li>Virt-viewer</li>
+<li>串口</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>这个插件用于管理KVM虚拟化的，KVM是内核虚拟机的一个缩写。</p>
+<p>使用cockpit后可以使用web的方式来管理虚拟机了。</p>
+<p>控制台提供有三种，第一种直接用VNC，还有是下载插件还有支持串口的连接。</p>
+<br>
+
+<h2 id="➡️扩展知识：实现双因素认证1"><a href="#➡️扩展知识：实现双因素认证1" class="headerlink" title="➡️扩展知识：实现双因素认证1"></a>➡️扩展知识：实现双因素认证1</h2><h3 id="🟦概述"><a href="#🟦概述" class="headerlink" title="🟦概述"></a>🟦概述</h3><ul>
+<li><strong>身份验证方法</strong></li>
+<li><strong>多因素验证</strong></li>
+<li><strong>Cockpit + Google Authenticator 双因素身份验证</strong><ul>
+<li>原理</li>
+<li>移动器端安装配置</li>
+<li>SELinux 相关的问题</li>
+</ul>
+</li>
+<li><strong>误区</strong><ul>
+<li>必须禁用SELinux</li>
+<li>因为要与Google的认证服务相连，所以服务器需要连接互联网。</li>
+</ul>
+</li>
+</ul>
+<br>
+
+<h3 id="🟦身份验证方法"><a href="#🟦身份验证方法" class="headerlink" title="🟦身份验证方法"></a>🟦身份验证方法</h3><ul>
+<li><p><strong>你知道什么？</strong> 密码</p>
+<ul>
+<li>用户密码</li>
+<li>OTP        One-Time Password , 一次性密码<ul>
+<li>HOTP        HMAC-based One-Time Password , 基于 HMAC</li>
+<li>HOTP        Time-based One-Time Password , 基于时间戳算法的一次性密码</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>你有什么？</strong></p>
+<ul>
+<li>证书</li>
+</ul>
+</li>
+<li><p><strong>你是谁？</strong></p>
+<ul>
+<li>生物特征 （指纹、人脸）</li>
+</ul>
+</li>
+<li><p><strong>你在哪里？</strong>逻辑地址</p>
+<ul>
+<li>IP地址</li>
+<li>MAC地址</li>
+<li>电话号码<ul>
+<li>有可能会被修改，MAC地址也是有工具来进行修改的。</li>
+<li>逻辑地址通常是用做辅助的验证手段</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>身份验证就是要解决你是谁这个问题，有很多种验证身份的方法。</p>
+<br>
+
+<h3 id="🟦多因素验证（MFA、Multi-factor-authentication）"><a href="#🟦多因素验证（MFA、Multi-factor-authentication）" class="headerlink" title="🟦多因素验证（MFA、Multi-factor authentication）"></a>🟦多因素验证（MFA、Multi-factor authentication）</h3><ul>
+<li><strong>用户要通过两种或两种以上的认证机制之后，才能得到授权</strong></li>
+<li><strong>双因素认证（2FA，Two-factor authentication）是多因素验证中的特例</strong></li>
+</ul>
+<p>这是一种计算机的访问方法，用户通过两种或者两种以上的认证方式，才能获取资源。</p>
+<p><img src="/images/remote-administration/cockpit2.png"></p>
+<br>
+
+<h3 id="🟦Cockpit身份验证"><a href="#🟦Cockpit身份验证" class="headerlink" title="🟦Cockpit身份验证"></a>🟦Cockpit身份验证</h3><p><img src="/images/remote-administration/cockpit3.png"></p>
+<p>cockpit的登陆过程：左边的用户通过浏览器发起连接服务器的请求，cockpit实际上不做身份上的验证，默认的情况下会转发到 PAM（可插入认证模块），这可以动态引入模块插件而不用去重启系统。</p>
+<p>PAM是通过配置文件来设置的默认是在右上目录的具体你的服务软件名上。这样PAM会调用一些库文件等来操作，对用户来验证。</p>
+<br>
+
+<h3 id="🟦Cockpit-Google-Authenticator-双因素身份验证"><a href="#🟦Cockpit-Google-Authenticator-双因素身份验证" class="headerlink" title="🟦Cockpit + Google Authenticator 双因素身份验证"></a>🟦Cockpit + Google Authenticator 双因素身份验证</h3><ul>
+<li><p><strong>基于时间与哈希的一次性密码算法的两种验证软件令牌</strong></p>
+</li>
+<li><p><strong>最初应用与Google的自有的认证服务</strong></p>
+</li>
+<li><p><strong>所使用的算法已列于 PFC 6238 和 RFC 4226</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">https://github.com/goole/goole-authenticator-libpam/</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>这就需要安装为Linux PAM 所写的Google验证器的插件（这是一种基于时间与哈希的一次性密码算法的两种验证软件令牌），最初用于google的服务，后来就可以为第三方软件生成动态口令也就是PAM插件。</p>
+<p>双因素验证的工作原理：用户在智能手机上安装google的验证APP，登陆到服务器上，再服务器上执行命令，该命令会在服务器上生成验证器所需要的秘钥文件，同时这个命令也会生成一个二维-码这就包含了一些初始化的信息。用户通过APP扫描二维码，当然让服务器显示二维码需要root用户安装一个rpm包，这样就能生成一些秘钥的文件的初始化信息，用户的手机和服务器的插件就共享了相同的初始化信息了。当然若不想扫描二维码就需要手工输入字符串就可以了。</p>
+<p>不管是在服务器端生成秘钥文件，生成二维码；客户端扫描二维码或者是手工输入相关的信息，这个过程中服务器插件和客户端的APP都是不需要联网的，都是脱机来运行的。</p>
+<p>为了避免各种意外，用户在服务器上执行的命令的时候，还会生成一个紧急的密码，这是为了避免出现意外而使用的一次性密码。</p>
+<p>当用户的APP和服务器使用的相同的信息，同时时间上的差异也不大，那么就会生成一个密码，那在用户登陆之后，界面会提示输入动态密码，用户输入后，服务器通过插件来验证动态密码的正确。</p>
+<br>
+
+<h2 id="➡️扩展知识：实现双因素认证2"><a href="#➡️扩展知识：实现双因素认证2" class="headerlink" title="➡️扩展知识：实现双因素认证2"></a>➡️扩展知识：实现双因素认证2</h2><h3 id="🟦实验：Cockpit-Google-Authenticator双因素身份验证"><a href="#🟦实验：Cockpit-Google-Authenticator双因素身份验证" class="headerlink" title="🟦实验：Cockpit + Google Authenticator双因素身份验证"></a>🟦实验：Cockpit + Google Authenticator双因素身份验证</h3><ul>
+<li><strong>系统配置</strong><ul>
+<li>安全服务器端组件</li>
+<li>修改Cockpit的PAM配置</li>
+<li>重新启动cockpit</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># dnf -y install grencode epel-release</span><br><span class="line"># dnf -y install google-authenticator</span><br><span class="line"></span><br><span class="line"># vi /etc/pam.d/cockpit</span><br><span class="line">  添加</span><br><span class="line"> # auth requird pam_google_authenticator.so</span><br><span class="line"> auth requird pam_google_authenticator.so nullok secret=$&#123;HOME&#125;/.cockpit/.google_authenticator</span><br><span class="line"> </span><br><span class="line"># systemctl restart cockpit.service</span><br><span class="line"># systemctl restart cockpit.socket</span><br></pre></td></tr></table></figure>
+
+<p>nullok 的意思的如果用户的家目录没有后面的文件，那就不做双因素认证。</p>
+<ul>
+<li><p><strong>用户使用</strong></p>
+<ul>
+<li><p>安装移动端服务器</p>
+<p><img src="/images/remote-administration/cockpit4.png"></p>
+</li>
+<li><p>登陆服务器，创建秘钥文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># cd ~</span><br><span class="line"># mkdir .cockpit</span><br><span class="line"># goole-authenticator --secret=.cockpit/.goole_authenticator</span><br><span class="line"> Do you want authentication tokens to be time-based (y/n) y</span><br></pre></td></tr></table></figure>
+
+<p>这同时会生成5个紧急的密码，密码5个密码都只能使用1次。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ chcon -R -v -t cockpit_tmp_t .cockpit</span><br></pre></td></tr></table></figure>
+
+<p>配置selinux上下文。</p>
+</li>
+<li><p>客户重新登陆</p>
+</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Linux服务配置</category>
+      </categories>
+      <tags>
+        <tag>X-Window</tag>
+        <tag>cockpit</tag>
       </tags>
   </entry>
 </search>

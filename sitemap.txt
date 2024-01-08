@@ -1,3 +1,4 @@
+http://example.com/2024/01/08/Linux%E8%BF%9C%E7%A8%8B%E8%AE%BF%E9%97%AE%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86/
 http://example.com/2024/01/07/Linux%E8%BF%9C%E7%A8%8B%E8%AE%BF%E9%97%AE%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86/
 http://example.com/2024/01/04/Linux%E8%BF%9C%E7%A8%8B%E8%AE%BF%E9%97%AE%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86/
 http://example.com/2024/01/01/new2024/
@@ -14,6 +15,8 @@ http://example.com/tags/ssh/
 http://example.com/tags/telnet/
 http://example.com/tags/VNC/
 http://example.com/tags/XRDP/
+http://example.com/tags/X-Window/
+http://example.com/tags/cockpit/
 http://example.com/categories/%E7%BD%91%E7%BB%9C%E5%B1%82/
 http://example.com/categories/log/
 http://example.com/categories/Linux/
