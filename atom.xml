@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2024-01-08T08:01:50.426Z</updated>
+  <updated>2024-01-12T13:30:29.651Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,56 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>学习就是这样20240112</title>
+    <link href="http://example.com/2024/01/12/%E5%AD%A6%E4%B9%A0%E5%B0%B1%E6%98%AF%E8%BF%99%E6%A0%B720240112/"/>
+    <id>http://example.com/2024/01/12/%E5%AD%A6%E4%B9%A0%E5%B0%B1%E6%98%AF%E8%BF%99%E6%A0%B720240112/</id>
+    <published>2024-01-12T13:26:34.000Z</published>
+    <updated>2024-01-12T13:30:29.651Z</updated>
+    
+    <content type="html"><![CDATA[<p>学习就是这样</p><p><img src="/images/life/aboutlearn.jpg"></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;学习就是这样&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/life/aboutlearn.jpg&quot;&gt;&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    <category term="生活" scheme="http://example.com/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+    <category term="学习" scheme="http://example.com/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>计算机的信息编码</title>
+    <link href="http://example.com/2024/01/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9A%84%E4%BF%A1%E6%81%AF%E7%BC%96%E7%A0%81/"/>
+    <id>http://example.com/2024/01/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9A%84%E4%BF%A1%E6%81%AF%E7%BC%96%E7%A0%81/</id>
+    <published>2024-01-12T13:21:35.000Z</published>
+    <updated>2024-01-12T14:15:23.278Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="信息编码"><a href="#信息编码" class="headerlink" title="信息编码"></a>信息编码</h1><h2 id="整数编码"><a href="#整数编码" class="headerlink" title="整数编码"></a>整数编码</h2><p>整数编码分为，<code>有符整数</code> 和 <code>无符号整数</code> 。</p><br><h3 id="无符号整数"><a href="#无符号整数" class="headerlink" title="无符号整数"></a>无符号整数</h3><p>$n$ 位的二进制无符号位能表示 $2^{n}$ 数字状态，范围是 $[0,2^{n}-1]$ 。</p><br><h3 id="有符号二进制整数"><a href="#有符号二进制整数" class="headerlink" title="有符号二进制整数"></a>有符号二进制整数</h3><p><code>0</code> 表示正，<code>1</code> 表示负数，其他位表示数值。</p><p>$n$ 位有符号数的表示范围： $-2^{n-1} ，+2^{n-1}-1$</p><p>8 位二进制表示的范围是 $-128,127$ ，这里的要注意  <code>10000000</code>  表示的是有符号数 <code>-128</code> 这是被规定的。</p><br><h3 id="原-反-补-码"><a href="#原-反-补-码" class="headerlink" title="原 反 补 码"></a>原 反 补 码</h3><p><strong>一个有符号数在计算机中存储是采用补码的形式来存储的。</strong></p><p>对于正数来说，<code>原 反 补</code> 都是相同的。</p><ul><li><p><strong>原码</strong></p><p>最左的第一位：0表示正，1表示负数</p></li><li><p><strong>反码</strong></p><p>对于负数来说，<code>符号位</code> 不变，其余的各位取反</p></li><li><p><strong>补码</strong></p><p>对于负数来说，在反码的基础上，最右边加1</p></li></ul><br><h2 id="小数数值在计算机中的表示"><a href="#小数数值在计算机中的表示" class="headerlink" title="小数数值在计算机中的表示"></a>小数数值在计算机中的表示</h2><p>为了能表示特大或者是特小的数，采用 <code>浮点数</code> 也称 **指数形式 ** 表示。</p><p><strong>浮点数：</strong>由 <strong>阶码</strong> 和 <strong>尾数</strong> 两部分构成，其中 阶码 用于确定数的范围，尾数 确定数的精度。<br>$$<br>尾数*10^{阶码}<br>$$<br><br></p><h2 id="字符编码"><a href="#字符编码" class="headerlink" title="字符编码"></a>字符编码</h2><h3 id="西文字符-ASCII-码"><a href="#西文字符-ASCII-码" class="headerlink" title="西文字符 ASCII 码"></a>西文字符 ASCII 码</h3><p>常见的一种编码，国际上通用的是7位版本。</p><ul><li><p><strong>常见的字符的编码</strong></p><table><thead><tr><th>常见的编码</th><th>对应的ASCII码(十进制)</th></tr></thead><tbody><tr><td>0</td><td>48</td></tr><tr><td>A</td><td>65</td></tr><tr><td>a</td><td>97</td></tr><tr><td>换行符</td><td>10</td></tr><tr><td>回车符</td><td>13</td></tr><tr><td>空格</td><td>32</td></tr></tbody></table><p><strong>关系：</strong>换行 &lt; 回车 &lt; 空格 &lt; 数字0-9 &lt; 大写 &lt; 小写</p></li></ul><br><h3 id="Unicode-集"><a href="#Unicode-集" class="headerlink" title="Unicode 集"></a>Unicode 集</h3><p>用于跨语言与ASCII码兼容。</p><p>能对2万以上的汉字进行编码。</p><ul><li><p><strong>输入码</strong></p></li><li><p><strong>输出码</strong></p><ul><li><p>点阵</p><p>每个汉字所占的字节数：n*n&#x2F;8</p><ul><li>在点阵中占的是1，空白的是0</li></ul><p>​<code>0000 1000 1000 0000</code> 转十六进制为 <code>0880</code> 。</p></li><li><p>矢量</p></li></ul></li><li><p><strong>区位码</strong></p><ul><li>汉字在区位表中的位置（1-94）</li><li>4位10进制构成，前两位是区码，后两位是位码</li></ul></li><li><p><strong>国标码</strong>（也称 交换码）</p><ul><li><p>通过使用程度来划分一级汉字；一级汉字以拼音来排列，二级则是偏旁部首</p></li><li><p><strong>国标码&#x3D;区位码+2020H</strong></p></li><li><p>国标码占2个字节，最高位是0，唯一性（西文的ASCII也是0）</p></li></ul></li><li><p><strong>机内码</strong></p><ul><li><p><strong>机内码：</strong>汉字在计算机存储、传输时的二进制编码：</p></li><li><p><strong>国标码+8080H &#x3D; 机内码</strong></p></li><li><p>每个汉字汉字占2个字节，每个字节的最高位是1</p></li></ul></li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;信息编码&quot;&gt;&lt;a href=&quot;#信息编码&quot; class=&quot;headerlink&quot; title=&quot;信息编码&quot;&gt;&lt;/a&gt;信息编码&lt;/h1&gt;&lt;h2 id=&quot;整数编码&quot;&gt;&lt;a href=&quot;#整数编码&quot; class=&quot;headerlink&quot; title=&quot;整数编码&quot;&gt;&lt;/a</summary>
+      
+    
+    
+    
+    <category term="计算机知识" scheme="http://example.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9F%A5%E8%AF%86/"/>
+    
+    
+    <category term="信息编码" scheme="http://example.com/tags/%E4%BF%A1%E6%81%AF%E7%BC%96%E7%A0%81/"/>
+    
+  </entry>
   
   <entry>
     <title>Linux远程访问第三部分</title>
