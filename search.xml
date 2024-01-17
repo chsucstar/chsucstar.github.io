@@ -1,398 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Internet-Protocol-Address</title>
-    <url>/2024/01/03/Internet-Protocol-Address/</url>
-    <content><![CDATA[<h1 id="IP地址"><a href="#IP地址" class="headerlink" title="IP地址"></a>IP地址</h1><p><strong>IP地址的组成：网络地址+主机地址</strong></p>
-<p>在 Internet 网络中，IP地址有两种表现形式：IP地址 和 域名</p>
-<p><strong>点分十进制</strong>：在 ipv4中 IP地址分为4组，每组8个二进制，每组使用 <code>.</code> 来分隔。</p>
-<p><br></p>
-<h1 id="IP地址的分类"><a href="#IP地址的分类" class="headerlink" title="IP地址的分类"></a>IP地址的分类</h1><p><strong>特殊的IP地址</strong></p>
-<div class="table-container">
-<table>
+    <title>学习就是这样20240112</title>
+    <url>/2024/01/12/%E7%94%9F%E6%B4%BB/%E5%AD%A6%E4%B9%A0%E5%B0%B1%E6%98%AF%E8%BF%99%E6%A0%B720240112/</url>
+    <content><![CDATA[<p>学习就是这样</p>
+<p><img src="/images/life/aboutlearn.jpg"></p>
+]]></content>
+      <categories>
+        <category>生活</category>
+      </categories>
+      <tags>
+        <tag>学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>电脑快捷键</title>
+    <url>/2024/01/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9F%A5%E8%AF%86/%E7%94%B5%E8%84%91%E5%BF%AB%E6%8D%B7%E9%94%AE/</url>
+    <content><![CDATA[<h1 id="💻︎Windows-快捷键"><a href="#💻︎Windows-快捷键" class="headerlink" title="💻︎Windows 快捷键"></a>💻︎Windows 快捷键</h1><table>
 <thead>
 <tr>
-<th>表现形式</th>
-<th>用途</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>以 0 开头</td>
-<td>服务器监听</td>
-</tr>
-<tr>
-<td>以 127 开头</td>
-<td>本机测试</td>
-</tr>
-<tr>
-<td>主机部分全0</td>
-<td>网络地址</td>
-</tr>
-<tr>
-<td>主机部分全1</td>
-<td>广播地址</td>
-</tr>
-</tbody>
-</table>
-</div>
-<ul>
-<li><p><strong>A类地址：</strong></p>
-<p>IP地址特征最高位是0，第一节字节是网络地址，有效地址的范围是 1~126 。</p>
-</li>
-<li><p><strong>B类地址：</strong></p>
-<p>最高位前两10，前两个字节是网络地址，地址范围 128.0.0.1 ~ 192.255.255.254</p>
-</li>
-<li><p><strong>C类地址：</strong></p>
-<p>最高位前三位是110，前三个字节是网络地址，地址范围 192.0.0.1 ~ 223.255.255.254</p>
-</li>
-<li><p><strong>D类地址：</strong></p>
-<p>地址范围是 224.0.0.0 ~ 239.255.255.255 用于多路广播，叫做多播地址</p>
-</li>
-<li><p><strong>E类地址：</strong></p>
-<p>地址范围是 240.0.0.0 ~ 255.255.255.255 保留拓展地址</p>
-</li>
-</ul>
-<p><br></p>
-<h1 id="保留的IP地址（私有IP地址）"><a href="#保留的IP地址（私有IP地址）" class="headerlink" title="保留的IP地址（私有IP地址）"></a>保留的IP地址（私有IP地址）</h1><p>这些地址不需要申请，可以直接使用，这些地址只能在局域网内部使用，不能出现在 Internet 上。</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>网络类型</th>
-<th>地址范围</th>
-<th>默认子网掩码</th>
-<th>特征</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>A</td>
-<td>10.0.0.1 ~ 10.255.255.254</td>
-<td>255.0.0.0</td>
-<td>以 10 来头</td>
-</tr>
-<tr>
-<td>B</td>
-<td>172.16.0.1 ~ 172.31.255.255.254</td>
-<td>255.255.0.0</td>
-<td>以 172.16 ~172.31 开头</td>
-</tr>
-<tr>
-<td>C</td>
-<td>192.168.0.1 ~ 192.168.255.254</td>
-<td>255.255.255.0</td>
-<td>以 192.168 开头</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p><br></p>
-<h1 id="IPV6"><a href="#IPV6" class="headerlink" title="IPV6"></a>IPV6</h1><p>由128位二进制构成，采用 <strong>冒号十六进制</strong> 表示，并分成了8组，每组4位的十六进制。</p>
-<p>理论上说 IPV6 的 IP 地址个数是 IPV4 的 IP 地址个数的 $2^{96}$ 倍。</p>
-<script type="math/tex; mode=display">
-\frac {2^{128}}{2^{32}}=2^{96}</script><p><br></p>
-<h2 id="使用冒分十六进制"><a href="#使用冒分十六进制" class="headerlink" title="使用冒分十六进制"></a>使用冒分十六进制</h2><ul>
-<li><p><strong>零点压缩法：</strong></p>
-<p>把连续的1组或多组0可以省略</p>
-<p>如：<code>EF00:0000:0000:0000:0002:0000:0001:0003</code></p>
-<p>压缩为：<code>EF00::0002:0000:0001:0003</code></p>
-</li>
-<li><p><strong>可省略每组前面的零</strong></p>
-<p>如：<code>EF00:0000:0000:0000:0002:0000:0001:0003</code></p>
-<p>压缩为：<code>EF00:0:0:0002:0:1:3</code></p>
-</li>
-<li><p><strong>也可以上面的合起来一起用</strong></p>
-<p>如：<code>EF00:0000:0000:0000:0002:0000:0001:0003</code></p>
-<p>压缩为：<code>EF00::2:0:1:3</code></p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>网络层</category>
-      </categories>
-      <tags>
-        <tag>IP地址</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>new2024</title>
-    <url>/2024/01/01/new2024/</url>
-    <content><![CDATA[<h1 id="2024-1-1"><a href="#2024-1-1" class="headerlink" title="2024&#x2F;1&#x2F;1"></a>2024&#x2F;1&#x2F;1</h1><p><img src="/images/202411.jpeg" alt="default"></p>
-<center>守株待兔，固不可取。</center>
-
-<center>叶公好龙，亦非所得。</center>
-
-<center>临渊羡鱼，不如退而结网。</center>
-
-<center>亡羊补牢，何如未雨绸缪。</center>
-
-<p align="right">图片出处：赵芾江山万里图卷</p>
-
-]]></content>
-      <categories>
-        <category>log</category>
-      </categories>
-      <tags>
-        <tag>life</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>newbin</title>
-    <url>/2023/12/31/newbin/</url>
-    <content><![CDATA[<p><img src="/2023/12/31/newbin/default.jpeg" alt></p>
-<p>I hope the Pacific is as blue as it has been in my dreams.<br>
-I hope.</p>
-]]></content>
-      <categories>
-        <category>log</category>
-      </categories>
-      <tags>
-        <tag>life</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>subnetting</title>
-    <url>/2024/01/03/subnetting/</url>
-    <content><![CDATA[<h1>1.划分子网</h1>
-<p>划分子网用于缓解网络号不足的情况，网络允许划分更小的网络，这样的网络称为 <code>子网</code> ，从实际上就是从主机部分借位来表示子网。</p>
-<ul>
-<li>
-<p><strong>子网号</strong></p>
-<p>主机号的前几位</p>
-</li>
-<li>
-<p><strong>主机位数</strong></p>
-<p>主机位数=32-现有子网掩码1的个数</p>
-</li>
-</ul>
-<br>
-<h2 id="1-1-求子网地址和子网号：">1.1 求子网地址和子网号：</h2>
-<p><strong>网络号</strong> 也称 <strong>网络地址</strong></p>
-<p>子网地址：网络号（照抄）+ 子网号（照抄）+ 主机号（全部是0）</p>
-<p>广播地址：网络号（照抄）+ 子网号（照抄）+ 主机号（全部是1）</p>
-<p>子网掩码：网络号（全部为1）+ 子网号（全部为1）+ 主机号（全部是1）</p>
-<br>
-<h3 id="1-1-2-示列">1.1.2 示列:</h3>
-<p>IP地址为 <code>192.168.1.163</code>，子网掩码 <code>255.255.255.224</code> 。</p>
-<p>网络号是 <code>192.168.1</code></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">相关地址: 11000000  10101000  00000001  10100011   192.168.1.163</span><br><span class="line">子网掩码: 11111111  11111111  11111111  11100000   255.255.255.224</span><br><span class="line">子网地址: 11000000  10101000  00000001  10100000   192.168.1.160</span><br></pre></td></tr></table></figure>
-<p>这里的子网号是5，子网位数本示列是3，所以10100000，取三位是5。</p>
-<p>子网号（数字）：把IP地址和子网掩码最后一组进行 <code>与运算</code> ，在结果上从左往右区 n 位，再转十进制，不过在算 <strong>子网地址</strong> 的时候子网号是八位的二进制转十进制。</p>
-<h2 id="1-2-其他">1.2 其他</h2>
-<p>子网个数 = <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">2^{n}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.664392em;vertical-align:0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.664392em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">n</span></span></span></span></span></span></span></span></span></span></span></span> （n 表示子网位数）</p>
-<p>主机数量 = <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mi>m</mi></msup><mo>−</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">2^{m}-2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.747722em;vertical-align:-0.08333em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.664392em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">m</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span></span></span></span> （m 表示主机位数）</p>
-]]></content>
-      <categories>
-        <category>网络层</category>
-      </categories>
-      <tags>
-        <tag>划分子网</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Linux远程访问第一部分</title>
-    <url>/2024/01/04/Linux%E8%BF%9C%E7%A8%8B%E8%AE%BF%E9%97%AE%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86/</url>
-    <content><![CDATA[<p>远程访问会用到 <code>ssh</code> 、<code>telnet</code> ，对于 telent 来说传输的数据是不加密的，密码是通过纯文本的形式来传递的，可以使用包获取工具来进行抓包解析。</p>
-<br>
-
-<h1 id="⬆️Telnet"><a href="#⬆️Telnet" class="headerlink" title="⬆️Telnet"></a>⬆️Telnet</h1><p>由于 telent 是以明文的方式进行数据的传递，所以对比 ssh 来说是不安全的，但是有的时候也会有用到 telnet 的情况。</p>
-<p>早期由于计算机资源只在军队和高校上使用，所以并没有考虑到信息加密，所以早期的计算机使用明文来进行通讯，这也就是 Telnet 能被使用原因。</p>
-<br>
-
-<h2 id="➡️安装-telnet"><a href="#➡️安装-telnet" class="headerlink" title="➡️安装 telnet"></a>➡️安装 telnet</h2><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># yum -y install telnet-server telnet</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># firewall-cmd -add-service=telnet</span></span><br><span class="line"><span class="comment"># firewall-cmd -add-service=telent --permanent</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># systemctl start telnet.socket</span></span><br></pre></td></tr></table></figure>
-
-<p>telnet 使用的端口是 <code>23</code> ，采用的是 C&#x2F;S 架构的方式，同时禁止管理员直接登陆。</p>
-<h2 id="➡️关于-telnet"><a href="#➡️关于-telnet" class="headerlink" title="➡️关于 telnet"></a>➡️关于 telnet</h2><ul>
-<li><p><strong>telnet 的数据流</strong></p>
-<p>① 本地信息通过操作系统传入客户机</p>
-<p>② 客户机程序处理信息后返回操作洗头膏，并通过操作系统经过网络传入目标远程机器</p>
-<p>③ 远程的操作系统获得程序于是传给服务器程序，通过服务器程序再次处理返回操作系统上的伪终端</p>
-<p>④ 操作系统程序将数据传送到用户正在运行的应用程序</p>
-</li>
-</ul>
-<p><img src="/images/remote-administration/telnet.png"></p>
-<ul>
-<li><strong>telnet 使用另一个局限是开销大的原因</strong><ul>
-<li>①每次输入输出计算机切换环境会多次切换</li>
-<li>② telnet 是逐字节传输数据。</li>
-</ul>
-</li>
-</ul>
-<br>
-
-<h1 id="⬆️SSH（Secure-shell）协议"><a href="#⬆️SSH（Secure-shell）协议" class="headerlink" title="⬆️SSH（Secure shell）协议"></a>⬆️SSH（Secure shell）协议</h1><p>ssh 是建立在应用层上的安全协议，最初是在 Unix 上的用来代替 telnet 等类型的程序。</p>
-<p><img src="/images/remote-administration/image-20230703111448428.png"></p>
-<ul>
-<li><strong>windows 上的关于 ssh 连接的软件</strong><ul>
-<li>Putty</li>
-<li>OpenSSH</li>
-<li>Termius</li>
-<li>SecureCRT</li>
-<li>MobaXterm</li>
-</ul>
-</li>
-</ul>
-<br>
-
-<h2 id="➡️SSH-linux-客户端"><a href="#➡️SSH-linux-客户端" class="headerlink" title="➡️SSH linux 客户端"></a>➡️SSH linux 客户端</h2><p>多数发新版自带有 ssh  软件，基本都是 <code>OpenSSH-client</code></p>
-<br>
-
-<h3 id="🟦OpenSSH-client"><a href="#🟦OpenSSH-client" class="headerlink" title="🟦OpenSSH-client"></a>🟦OpenSSH-client</h3><ul>
-<li><strong>关于 openssh-client 的配置</strong><ul>
-<li><strong>全局配置</strong><ul>
-<li>&#x2F;etc&#x2F;ssh&#x2F;ssh_config</li>
-<li>&#x2F;etc&#x2F;ssh&#x2F;ssh_comfig&#x2F;*.conf</li>
-</ul>
-</li>
-<li><strong>个人配置</strong><ul>
-<li>~&#x2F;.ssh&#x2F;config</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><strong>命令：</strong><ul>
-<li>ssh：OpenSSH SSH client (remote login program)</li>
-<li>scp： Secure copy (remove file copy program)</li>
-<li>sftp：Secure file transfer program</li>
-</ul>
-</li>
-</ul>
-<blockquote style="border-left: 5px solid #6CA2F9; background-color: #ECF3FE; padding: 10px;">
-<div style="color: #24687D; font-weight: bold;height: 20px;height:25px;">🔵 注意：</div> 
-    <p style=" text-indent: 2em;">/etc/ssh/ssh_config 大部分是注释，默认有效的一行内容是加载一个目录。</p>
-    <p style=" text-indent: 2em;">~/.ssh/config 在home目录中有一个隐藏的文件夹，这个文件夹中有一个文件，包含的内容是 主机 + 秘钥</p></blockquote>
-
-<br>
-
-<h3 id="🟦SSH-的使用"><a href="#🟦SSH-的使用" class="headerlink" title="🟦SSH 的使用"></a>🟦SSH 的使用</h3><p>使用ssh连接默认使用的是root用户，可以加上参数 <code>ssh -l</code> 指定用户；或者是 <code>ssh 用户名@主机名</code> ，在这后面可以加上命令，这样会使得连接后执行命令随后退出ssh登陆。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># ssh 192.168.1.232</span><br><span class="line"># ssh -l  tom 192.168.1.232  或者   ssh tom@192.168.1.232</span><br><span class="line"># ssh tom@192.168.1.232 ip a</span><br></pre></td></tr></table></figure>
-
-<p><strong>scp的使用：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">scp anaconda.cfg root@192.168.1.232:/tmp/</span><br></pre></td></tr></table></figure>
-
-<p><strong>sftp的使用：</strong></p>
-<p>sftp与scp的命令类似</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># sftp 192.168.1.232</span><br><span class="line">sftp&gt; mget * 可以同时下过个文件到本地</span><br></pre></td></tr></table></figure>
-
-<br>
-
-<h2 id="➡️拒绝-root-用户登陆"><a href="#➡️拒绝-root-用户登陆" class="headerlink" title="➡️拒绝 root 用户登陆"></a>➡️拒绝 root 用户登陆</h2><h3 id="🟦OpenSSH-服务器配置文件"><a href="#🟦OpenSSH-服务器配置文件" class="headerlink" title="🟦OpenSSH 服务器配置文件"></a>🟦OpenSSH 服务器配置文件</h3><p>由于 ssh 是 Linux 最常用的远程访问协议，所以很多黑客会去查找漏洞。</p>
-<p>下面是 <code>/etc/ssh</code></p>
-<ul>
-<li><strong>监听端口：<code>port 22</code></strong></li>
-<li><strong>监听地址：<code>ListenAddress 0.0.0.0</code></strong></li>
-<li><strong>允许 root 用户登陆：<code>PermitRootLogin yes</code></strong></li>
-<li><strong>禁用 DNS 反向解析：<code>UseDNS no</code></strong></li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>配置文件</th>
-<th>描述</th>
+<th>功能</th>
+<th>快捷键</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>moduli</td>
-<td>比较大的文本文件，是加密算法所使用的素数和随机秘钥生成器的文件</td>
+<td>截取当前屏幕的快捷键是</td>
+<td><strong>Alt+PrintScreen</strong></td>
 </tr>
 <tr>
-<td>ssh_config</td>
-<td>这是客户端的配置</td>
+<td>系统中将应用程序窗口关闭的快捷键是</td>
+<td><strong>Alt+F4</strong></td>
 </tr>
 <tr>
-<td>ssh_config.d</td>
-<td>是ssh服务器端的配置</td>
+<td>非直接打开任务管理器</td>
+<td><strong>Ctrl+Alt+delete</strong></td>
 </tr>
 <tr>
-<td>sshd_config</td>
-<td>是使用加密算法的服务器端的密钥对公共秘钥</td>
+<td></td>
+<td></td>
 </tr>
 <tr>
-<td>ssh_host_ecdsa_key</td>
-<td>是使用加密算法的服务器端的密钥对私有秘钥</td>
+<td></td>
+<td></td>
 </tr>
 <tr>
-<td>ssh_host_ecdsa_key.pub</td>
-<td>是使用加密算法的服务器端的密钥对的公共秘钥</td>
+<td></td>
+<td></td>
 </tr>
 <tr>
-<td>ssh_host_ed25519_key</td>
-<td>是使用加密算法的服务器端的密钥对私有秘钥</td>
-</tr>
-<tr>
-<td>ssh_host_ed25519_key.pub</td>
-<td>是使用加密算法的服务器端的密钥对的公共秘钥</td>
-</tr>
-<tr>
-<td>ssh_host_rsa_key</td>
-<td>是使用加密算法的服务器端的密钥对私有秘钥</td>
-</tr>
-<tr>
-<td>ssh_host_rsa_key.pub</td>
-<td>是使用加密算法的服务器端的密钥对的公共秘钥</td>
+<td></td>
+<td></td>
 </tr>
 </tbody></table>
-<blockquote style="border-left: 5px solid #6CA2F9; background-color: #ECF3FE; padding: 10px;">
-<div style="color: #24687D; font-weight: bold;height: 20px;height:25px;">🔵 注意：</div> 
-    <p style=" text-indent: 2em;"><code>/etc/ssh/ssh_config</code> 这里面记录了服务器端的公共秘钥文件，就在Hostkey这一部分。</p>
-    <p style=" text-indent: 2em;"><code>SyslogFacility AUTHPRIV</code>这与日志有关，后面指定了记录到安全日志的信息就是 /vr/log/secure 这个文件。</p>
-    <p style=" text-indent: 2em;"><code>PermitRootLogin yes</code> 允许root用户能够登陆。通过root登陆并不是很安全。</p></blockquote>
-
-<p>除了修改配置文件，重启程序，还要考虑  <strong><code>selinux</code><strong>、</strong><code>防火墙的设置</code></strong> 。</p>
-<p><strong>DNS反向解析：</strong>是指把 IP地址 解析成 主机名、域名， ssh用这个特性可以进行安全检查，但是如果ssh服务部署在内网，你的DNS没有做反向记录，当客户端来连接的时候，ssh去查服务器尝试进行反向解析，而DNS又没有记录，所以会超时，这就会等一段时间，所以会感觉卡一下，所以对与内网是 ssh 服务器来说，如果你的DNS没有设置查询的区域、记录，那么就可以设置成 no。</p>
-<h2 id="➡️防火墙配置"><a href="#➡️防火墙配置" class="headerlink" title="➡️防火墙配置"></a>➡️防火墙配置</h2><h3 id="🟦背景知识：firewalld-的区域"><a href="#🟦背景知识：firewalld-的区域" class="headerlink" title="🟦背景知识：firewalld 的区域"></a>🟦背景知识：firewalld 的区域</h3><p>在CentOS8中，默认使用的是 firewalld 进行防火墙的管理。</p>
-<p>firewalld 引入了一个区域与服务的概念，这样使得管理员管理起来更高效，区域也就是Zone 这是针对特定的应用或者是场景，可能具有的各种信任级别的一些与预设定的规则集。</p>
-<p><img src="/images/remote-administration/sshfirewalld.png"></p>
-<p>Zone最大的好处就是切换方便，可以在不同的环境下把Zone应用到网卡，源主机。比如：出差去连接公共的WiFi最好就是使用公共网络，这样配置的比较严格那么就会比较安全，而在家中连接的是自己的WiFi那么就可以获得比较宽松的规则。</p>
-<h3 id="🟦原有默认的规则"><a href="#🟦原有默认的规则" class="headerlink" title="🟦原有默认的规则"></a>🟦原有默认的规则</h3><p><img src="/images/remote-administration/sshf2.png"></p>
-<p>第一行：当前的活动区域只有public，public与机器上一个叫 ens160 的网卡做关联。</p>
-<p>第二行：没有去指定Zone的名称，那么会采用默认的public区域。</p>
 <br>
 
-<p>需求：假设一个管理员他的IP地址是192.168.1.49，为了安全想使用防火墙来限制一下，要求只允许 192.168.1.49 来进行通过ssh服务端来进行管理，这个需求在防火墙配置中有很多的方法，比如说把这个ip地址添加到，trusted这个区域里面，然后在这个区域中允许ssh服务器的入站，然后把原来public的ssh服务给删除掉。</p>
-<p>第三行：没有和ip做捆绑，也没有服务，这就需要调整。</p>
-<br>
-
-<h3 id="🟦只允许管理员在特定主机上访问SSH服务器"><a href="#🟦只允许管理员在特定主机上访问SSH服务器" class="headerlink" title="🟦只允许管理员在特定主机上访问SSH服务器"></a>🟦只允许管理员在特定主机上访问SSH服务器</h3><p><img src="/images/remote-administration/sshf3.png"></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># firewall-cmd --permanent --add-source=192.168.1.19 --zone=trusted</span><br><span class="line"># firewall-cmd --permanent --add-serice=ssh --zone=trusted</span><br><span class="line"></span><br><span class="line"># firewall-cmd --permanent --remove-service=ssh --zone=public</span><br><span class="line"># firewall-cmd --reload</span><br></pre></td></tr></table></figure>
-
-<p>第一行：通过 <code>--add-source</code> 添加到 <code>trusted</code> 中，也就是把ip和信任区域做关联。</p>
-<p>第二行：添加ssh服务。</p>
-<p>第三行：把原来的服务删除掉。</p>
-<p>第四行：重新加载。</p>
-<p><strong>修改规则之后：</strong></p>
-<p><img src="/images/remote-administration/sshf4.png"></p>
-<br>
-
-<h2 id="➡️监听端口修改"><a href="#➡️监听端口修改" class="headerlink" title="➡️监听端口修改"></a>➡️监听端口修改</h2><p>单位的管理员根据单位的安全策略，需要去修改ssh服务器的配置，把默认监听的22端口，修改成222。</p>
-<p>通过修改端口号来隐藏服务，这种做法对于新版本的扫描器来讲基本上用处不大，因为新版本的扫描器扫描的工具都很强大。</p>
-<p>操作并不复杂，但是为了完成这个目标，需要修改除了ssh服务器的配置以外，还要修改selinux的策略和防火墙的配置。</p>
-<p>selinux在默认的情况下会阻止sshd这个进程监听除了22以外的其他的非标准端口。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># yum -y install policycoreutils-python-utils</span><br><span class="line"></span><br><span class="line"># semanage port -a -t ssh_port_t -p tcp 2222</span><br><span class="line"># semanage port -l | grep ssh</span><br><span class="line"></span><br><span class="line"># vi /etc/ssh/sshd_config</span><br><span class="line">修改为: Port 22 为 Port 2222</span><br><span class="line"></span><br><span class="line"># firewalld-cmd --permanent --add-port 2222/tcp</span><br><span class="line"># firewalld-cmd --reload</span><br><span class="line"># systemctl restart sshd</span><br></pre></td></tr></table></figure>
-
-<blockquote style="border-left: 5px solid #f00; background-color: #ffe5e5; padding: 10px;">
-<div style="color: #f00; font-weight: bold;height: 20px;height:25px;">🔴 警告：</div> 
-    <p style=" text-indent: 2em;">直接修改 端口号而不做其他的工作要保存。</p></blockquote>
-
-<blockquote style="border-left: 5px solid #f0ab00; background-color: #fdf7e7; padding: 10px;">
-<div style="color: #7d643f; font-weight: bold;height: 20px;height:25px;">🟡 重要：</div> 
-    <p style=" text-indent: 2em;">一些深入的检查，可以查看 <code>端口号</code></p>
-    <p style=" text-indent: 2em;"><code>/var/log/messages</code> 系统日志</p>
-    <p style=" text-indent: 2em;"><code>/var/log/secure</code> 系统安全日志</p>
-    <p style=" text-indent: 2em;"><code>/var/log/audit/audit.log</code> 审计日志，看这种 type=AVC 这叫做访问向量缓存，这是selinux的日志。</p></blockquote>
+<h1 id="word-快捷键"><a href="#word-快捷键" class="headerlink" title="word 快捷键"></a>word 快捷键</h1><table>
+<thead>
+<tr>
+<th>功能</th>
+<th>快捷键</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>关闭 Word 窗口</td>
+<td><strong>Ctrl + F4</strong></td>
+</tr>
+<tr>
+<td>选择矩形文本</td>
+<td><strong>按住Alt</strong></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
 ]]></content>
       <categories>
-        <category>Linux服务配置</category>
+        <category>计算机知识</category>
       </categories>
       <tags>
-        <tag>ssh</tag>
-        <tag>telnet</tag>
+        <tag>电脑快捷键</tag>
       </tags>
   </entry>
   <entry>
     <title>Linux远程访问第二部分</title>
-    <url>/2024/01/07/Linux%E8%BF%9C%E7%A8%8B%E8%AE%BF%E9%97%AE%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86/</url>
+    <url>/2024/01/07/Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE/%E8%BF%9C%E7%A8%8B%E8%AE%BF%E9%97%AE/Linux%E8%BF%9C%E7%A8%8B%E8%AE%BF%E9%97%AE%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86/</url>
     <content><![CDATA[<h1 id="⬆️VNC概念与原理"><a href="#⬆️VNC概念与原理" class="headerlink" title="⬆️VNC概念与原理"></a>⬆️VNC概念与原理</h1><p>Linux 大多数情况下都是远程进行管理的，当在管理的过程中很少会用到图形界面，多数情况下用到的是 ssh 连接服务器。</p>
 <p>有的时候使用图形界面会方便一些，比如说甲骨文的数据库的安装。</p>
 <br>
@@ -577,7 +269,7 @@ I hope.</p>
   </entry>
   <entry>
     <title>Linux远程访问第三部分</title>
-    <url>/2024/01/08/Linux%E8%BF%9C%E7%A8%8B%E8%AE%BF%E9%97%AE%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86/</url>
+    <url>/2024/01/08/Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE/%E8%BF%9C%E7%A8%8B%E8%AE%BF%E9%97%AE/Linux%E8%BF%9C%E7%A8%8B%E8%AE%BF%E9%97%AE%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86/</url>
     <content><![CDATA[<h1 id="⬆️什么是-X-Window-？"><a href="#⬆️什么是-X-Window-？" class="headerlink" title="⬆️什么是 X-Window ？"></a>⬆️什么是 X-Window ？</h1><ul>
 <li><strong>X Window System 也简称为X、X11或 X-Window</strong></li>
 <li><strong>一种开放源码、跨平台、客户端-服务器计算机软件系统，可在分布式网络环境中提供GUI</strong></li>
@@ -847,20 +539,255 @@ I hope.</p>
       </tags>
   </entry>
   <entry>
+    <title>Linux远程访问第一部分</title>
+    <url>/2024/01/04/Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE/%E8%BF%9C%E7%A8%8B%E8%AE%BF%E9%97%AE/Linux%E8%BF%9C%E7%A8%8B%E8%AE%BF%E9%97%AE%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86/</url>
+    <content><![CDATA[<p>远程访问会用到 <code>ssh</code> 、<code>telnet</code> ，对于 telent 来说传输的数据是不加密的，密码是通过纯文本的形式来传递的，可以使用包获取工具来进行抓包解析。</p>
+<br>
+
+<h1 id="⬆️Telnet"><a href="#⬆️Telnet" class="headerlink" title="⬆️Telnet"></a>⬆️Telnet</h1><p>由于 telent 是以明文的方式进行数据的传递，所以对比 ssh 来说是不安全的，但是有的时候也会有用到 telnet 的情况。</p>
+<p>早期由于计算机资源只在军队和高校上使用，所以并没有考虑到信息加密，所以早期的计算机使用明文来进行通讯，这也就是 Telnet 能被使用原因。</p>
+<br>
+
+<h2 id="➡️安装-telnet"><a href="#➡️安装-telnet" class="headerlink" title="➡️安装 telnet"></a>➡️安装 telnet</h2><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># yum -y install telnet-server telnet</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># firewall-cmd -add-service=telnet</span></span><br><span class="line"><span class="comment"># firewall-cmd -add-service=telent --permanent</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># systemctl start telnet.socket</span></span><br></pre></td></tr></table></figure>
+
+<p>telnet 使用的端口是 <code>23</code> ，采用的是 C&#x2F;S 架构的方式，同时禁止管理员直接登陆。</p>
+<h2 id="➡️关于-telnet"><a href="#➡️关于-telnet" class="headerlink" title="➡️关于 telnet"></a>➡️关于 telnet</h2><ul>
+<li><p><strong>telnet 的数据流</strong></p>
+<p>① 本地信息通过操作系统传入客户机</p>
+<p>② 客户机程序处理信息后返回操作洗头膏，并通过操作系统经过网络传入目标远程机器</p>
+<p>③ 远程的操作系统获得程序于是传给服务器程序，通过服务器程序再次处理返回操作系统上的伪终端</p>
+<p>④ 操作系统程序将数据传送到用户正在运行的应用程序</p>
+</li>
+</ul>
+<p><img src="/images/remote-administration/telnet.png"></p>
+<ul>
+<li><strong>telnet 使用另一个局限是开销大的原因</strong><ul>
+<li>①每次输入输出计算机切换环境会多次切换</li>
+<li>② telnet 是逐字节传输数据。</li>
+</ul>
+</li>
+</ul>
+<br>
+
+<h1 id="⬆️SSH（Secure-shell）协议"><a href="#⬆️SSH（Secure-shell）协议" class="headerlink" title="⬆️SSH（Secure shell）协议"></a>⬆️SSH（Secure shell）协议</h1><p>ssh 是建立在应用层上的安全协议，最初是在 Unix 上的用来代替 telnet 等类型的程序。</p>
+<p><img src="/images/remote-administration/image-20230703111448428.png"></p>
+<ul>
+<li><strong>windows 上的关于 ssh 连接的软件</strong><ul>
+<li>Putty</li>
+<li>OpenSSH</li>
+<li>Termius</li>
+<li>SecureCRT</li>
+<li>MobaXterm</li>
+</ul>
+</li>
+</ul>
+<br>
+
+<h2 id="➡️SSH-linux-客户端"><a href="#➡️SSH-linux-客户端" class="headerlink" title="➡️SSH linux 客户端"></a>➡️SSH linux 客户端</h2><p>多数发新版自带有 ssh  软件，基本都是 <code>OpenSSH-client</code></p>
+<br>
+
+<h3 id="🟦OpenSSH-client"><a href="#🟦OpenSSH-client" class="headerlink" title="🟦OpenSSH-client"></a>🟦OpenSSH-client</h3><ul>
+<li><strong>关于 openssh-client 的配置</strong><ul>
+<li><strong>全局配置</strong><ul>
+<li>&#x2F;etc&#x2F;ssh&#x2F;ssh_config</li>
+<li>&#x2F;etc&#x2F;ssh&#x2F;ssh_comfig&#x2F;*.conf</li>
+</ul>
+</li>
+<li><strong>个人配置</strong><ul>
+<li>~&#x2F;.ssh&#x2F;config</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>命令：</strong><ul>
+<li>ssh：OpenSSH SSH client (remote login program)</li>
+<li>scp： Secure copy (remove file copy program)</li>
+<li>sftp：Secure file transfer program</li>
+</ul>
+</li>
+</ul>
+<blockquote style="border-left: 5px solid #6CA2F9; background-color: #ECF3FE; padding: 10px;">
+<div style="color: #24687D; font-weight: bold;height: 20px;height:25px;">🔵 注意：</div> 
+    <p style=" text-indent: 2em;">/etc/ssh/ssh_config 大部分是注释，默认有效的一行内容是加载一个目录。</p>
+    <p style=" text-indent: 2em;">~/.ssh/config 在home目录中有一个隐藏的文件夹，这个文件夹中有一个文件，包含的内容是 主机 + 秘钥</p></blockquote>
+
+<br>
+
+<h3 id="🟦SSH-的使用"><a href="#🟦SSH-的使用" class="headerlink" title="🟦SSH 的使用"></a>🟦SSH 的使用</h3><p>使用ssh连接默认使用的是root用户，可以加上参数 <code>ssh -l</code> 指定用户；或者是 <code>ssh 用户名@主机名</code> ，在这后面可以加上命令，这样会使得连接后执行命令随后退出ssh登陆。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># ssh 192.168.1.232</span><br><span class="line"># ssh -l  tom 192.168.1.232  或者   ssh tom@192.168.1.232</span><br><span class="line"># ssh tom@192.168.1.232 ip a</span><br></pre></td></tr></table></figure>
+
+<p><strong>scp的使用：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">scp anaconda.cfg root@192.168.1.232:/tmp/</span><br></pre></td></tr></table></figure>
+
+<p><strong>sftp的使用：</strong></p>
+<p>sftp与scp的命令类似</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># sftp 192.168.1.232</span><br><span class="line">sftp&gt; mget * 可以同时下过个文件到本地</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h2 id="➡️拒绝-root-用户登陆"><a href="#➡️拒绝-root-用户登陆" class="headerlink" title="➡️拒绝 root 用户登陆"></a>➡️拒绝 root 用户登陆</h2><h3 id="🟦OpenSSH-服务器配置文件"><a href="#🟦OpenSSH-服务器配置文件" class="headerlink" title="🟦OpenSSH 服务器配置文件"></a>🟦OpenSSH 服务器配置文件</h3><p>由于 ssh 是 Linux 最常用的远程访问协议，所以很多黑客会去查找漏洞。</p>
+<p>下面是 <code>/etc/ssh</code></p>
+<ul>
+<li><strong>监听端口：<code>port 22</code></strong></li>
+<li><strong>监听地址：<code>ListenAddress 0.0.0.0</code></strong></li>
+<li><strong>允许 root 用户登陆：<code>PermitRootLogin yes</code></strong></li>
+<li><strong>禁用 DNS 反向解析：<code>UseDNS no</code></strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>配置文件</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>moduli</td>
+<td>比较大的文本文件，是加密算法所使用的素数和随机秘钥生成器的文件</td>
+</tr>
+<tr>
+<td>ssh_config</td>
+<td>这是客户端的配置</td>
+</tr>
+<tr>
+<td>ssh_config.d</td>
+<td>是ssh服务器端的配置</td>
+</tr>
+<tr>
+<td>sshd_config</td>
+<td>是使用加密算法的服务器端的密钥对公共秘钥</td>
+</tr>
+<tr>
+<td>ssh_host_ecdsa_key</td>
+<td>是使用加密算法的服务器端的密钥对私有秘钥</td>
+</tr>
+<tr>
+<td>ssh_host_ecdsa_key.pub</td>
+<td>是使用加密算法的服务器端的密钥对的公共秘钥</td>
+</tr>
+<tr>
+<td>ssh_host_ed25519_key</td>
+<td>是使用加密算法的服务器端的密钥对私有秘钥</td>
+</tr>
+<tr>
+<td>ssh_host_ed25519_key.pub</td>
+<td>是使用加密算法的服务器端的密钥对的公共秘钥</td>
+</tr>
+<tr>
+<td>ssh_host_rsa_key</td>
+<td>是使用加密算法的服务器端的密钥对私有秘钥</td>
+</tr>
+<tr>
+<td>ssh_host_rsa_key.pub</td>
+<td>是使用加密算法的服务器端的密钥对的公共秘钥</td>
+</tr>
+</tbody></table>
+<blockquote style="border-left: 5px solid #6CA2F9; background-color: #ECF3FE; padding: 10px;">
+<div style="color: #24687D; font-weight: bold;height: 20px;height:25px;">🔵 注意：</div> 
+    <p style=" text-indent: 2em;"><code>/etc/ssh/ssh_config</code> 这里面记录了服务器端的公共秘钥文件，就在Hostkey这一部分。</p>
+    <p style=" text-indent: 2em;"><code>SyslogFacility AUTHPRIV</code>这与日志有关，后面指定了记录到安全日志的信息就是 /vr/log/secure 这个文件。</p>
+    <p style=" text-indent: 2em;"><code>PermitRootLogin yes</code> 允许root用户能够登陆。通过root登陆并不是很安全。</p></blockquote>
+
+<p>除了修改配置文件，重启程序，还要考虑  <strong><code>selinux</code><strong>、</strong><code>防火墙的设置</code></strong> 。</p>
+<p><strong>DNS反向解析：</strong>是指把 IP地址 解析成 主机名、域名， ssh用这个特性可以进行安全检查，但是如果ssh服务部署在内网，你的DNS没有做反向记录，当客户端来连接的时候，ssh去查服务器尝试进行反向解析，而DNS又没有记录，所以会超时，这就会等一段时间，所以会感觉卡一下，所以对与内网是 ssh 服务器来说，如果你的DNS没有设置查询的区域、记录，那么就可以设置成 no。</p>
+<h2 id="➡️防火墙配置"><a href="#➡️防火墙配置" class="headerlink" title="➡️防火墙配置"></a>➡️防火墙配置</h2><h3 id="🟦背景知识：firewalld-的区域"><a href="#🟦背景知识：firewalld-的区域" class="headerlink" title="🟦背景知识：firewalld 的区域"></a>🟦背景知识：firewalld 的区域</h3><p>在CentOS8中，默认使用的是 firewalld 进行防火墙的管理。</p>
+<p>firewalld 引入了一个区域与服务的概念，这样使得管理员管理起来更高效，区域也就是Zone 这是针对特定的应用或者是场景，可能具有的各种信任级别的一些与预设定的规则集。</p>
+<p><img src="/images/remote-administration/sshfirewalld.png"></p>
+<p>Zone最大的好处就是切换方便，可以在不同的环境下把Zone应用到网卡，源主机。比如：出差去连接公共的WiFi最好就是使用公共网络，这样配置的比较严格那么就会比较安全，而在家中连接的是自己的WiFi那么就可以获得比较宽松的规则。</p>
+<h3 id="🟦原有默认的规则"><a href="#🟦原有默认的规则" class="headerlink" title="🟦原有默认的规则"></a>🟦原有默认的规则</h3><p><img src="/images/remote-administration/sshf2.png"></p>
+<p>第一行：当前的活动区域只有public，public与机器上一个叫 ens160 的网卡做关联。</p>
+<p>第二行：没有去指定Zone的名称，那么会采用默认的public区域。</p>
+<br>
+
+<p>需求：假设一个管理员他的IP地址是192.168.1.49，为了安全想使用防火墙来限制一下，要求只允许 192.168.1.49 来进行通过ssh服务端来进行管理，这个需求在防火墙配置中有很多的方法，比如说把这个ip地址添加到，trusted这个区域里面，然后在这个区域中允许ssh服务器的入站，然后把原来public的ssh服务给删除掉。</p>
+<p>第三行：没有和ip做捆绑，也没有服务，这就需要调整。</p>
+<br>
+
+<h3 id="🟦只允许管理员在特定主机上访问SSH服务器"><a href="#🟦只允许管理员在特定主机上访问SSH服务器" class="headerlink" title="🟦只允许管理员在特定主机上访问SSH服务器"></a>🟦只允许管理员在特定主机上访问SSH服务器</h3><p><img src="/images/remote-administration/sshf3.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># firewall-cmd --permanent --add-source=192.168.1.19 --zone=trusted</span><br><span class="line"># firewall-cmd --permanent --add-serice=ssh --zone=trusted</span><br><span class="line"></span><br><span class="line"># firewall-cmd --permanent --remove-service=ssh --zone=public</span><br><span class="line"># firewall-cmd --reload</span><br></pre></td></tr></table></figure>
+
+<p>第一行：通过 <code>--add-source</code> 添加到 <code>trusted</code> 中，也就是把ip和信任区域做关联。</p>
+<p>第二行：添加ssh服务。</p>
+<p>第三行：把原来的服务删除掉。</p>
+<p>第四行：重新加载。</p>
+<p><strong>修改规则之后：</strong></p>
+<p><img src="/images/remote-administration/sshf4.png"></p>
+<br>
+
+<h2 id="➡️监听端口修改"><a href="#➡️监听端口修改" class="headerlink" title="➡️监听端口修改"></a>➡️监听端口修改</h2><p>单位的管理员根据单位的安全策略，需要去修改ssh服务器的配置，把默认监听的22端口，修改成222。</p>
+<p>通过修改端口号来隐藏服务，这种做法对于新版本的扫描器来讲基本上用处不大，因为新版本的扫描器扫描的工具都很强大。</p>
+<p>操作并不复杂，但是为了完成这个目标，需要修改除了ssh服务器的配置以外，还要修改selinux的策略和防火墙的配置。</p>
+<p>selinux在默认的情况下会阻止sshd这个进程监听除了22以外的其他的非标准端口。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># yum -y install policycoreutils-python-utils</span><br><span class="line"></span><br><span class="line"># semanage port -a -t ssh_port_t -p tcp 2222</span><br><span class="line"># semanage port -l | grep ssh</span><br><span class="line"></span><br><span class="line"># vi /etc/ssh/sshd_config</span><br><span class="line">修改为: Port 22 为 Port 2222</span><br><span class="line"></span><br><span class="line"># firewalld-cmd --permanent --add-port 2222/tcp</span><br><span class="line"># firewalld-cmd --reload</span><br><span class="line"># systemctl restart sshd</span><br></pre></td></tr></table></figure>
+
+<blockquote style="border-left: 5px solid #f00; background-color: #ffe5e5; padding: 10px;">
+<div style="color: #f00; font-weight: bold;height: 20px;height:25px;">🔴 警告：</div> 
+    <p style=" text-indent: 2em;">直接修改 端口号而不做其他的工作要保存。</p></blockquote>
+
+<blockquote style="border-left: 5px solid #f0ab00; background-color: #fdf7e7; padding: 10px;">
+<div style="color: #7d643f; font-weight: bold;height: 20px;height:25px;">🟡 重要：</div> 
+    <p style=" text-indent: 2em;">一些深入的检查，可以查看 <code>端口号</code></p>
+    <p style=" text-indent: 2em;"><code>/var/log/messages</code> 系统日志</p>
+    <p style=" text-indent: 2em;"><code>/var/log/secure</code> 系统安全日志</p>
+    <p style=" text-indent: 2em;"><code>/var/log/audit/audit.log</code> 审计日志，看这种 type=AVC 这叫做访问向量缓存，这是selinux的日志。</p></blockquote>
+]]></content>
+      <categories>
+        <category>Linux服务配置</category>
+      </categories>
+      <tags>
+        <tag>ssh</tag>
+        <tag>telnet</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>new2024</title>
+    <url>/2024/01/01/%E7%94%9F%E6%B4%BB/new2024/</url>
+    <content><![CDATA[<h1 id="2024-1-1"><a href="#2024-1-1" class="headerlink" title="2024&#x2F;1&#x2F;1"></a>2024&#x2F;1&#x2F;1</h1><p><img src="/images/202411.jpeg" alt="default"></p>
+<center>守株待兔，固不可取。</center>
+
+<center>叶公好龙，亦非所得。</center>
+
+<center>临渊羡鱼，不如退而结网。</center>
+
+<center>亡羊补牢，何如未雨绸缪。</center>
+
+<p align="right">图片出处：赵芾江山万里图卷</p>
+
+]]></content>
+      <categories>
+        <category>log</category>
+      </categories>
+      <tags>
+        <tag>life</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>newbin</title>
+    <url>/2023/12/31/%E7%94%9F%E6%B4%BB/newbin/</url>
+    <content><![CDATA[<p><img src="/2023/12/31/%E7%94%9F%E6%B4%BB/newbin/default.jpeg"></p>
+<p>I hope the Pacific is as blue as it has been in my dreams.<br>I hope.</p>
+]]></content>
+      <categories>
+        <category>log</category>
+      </categories>
+      <tags>
+        <tag>life</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>计算机的信息编码</title>
-    <url>/2024/01/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9A%84%E4%BF%A1%E6%81%AF%E7%BC%96%E7%A0%81/</url>
-    <content><![CDATA[<h1 id="信息编码"><a href="#信息编码" class="headerlink" title="信息编码"></a>信息编码</h1><h2 id="整数编码"><a href="#整数编码" class="headerlink" title="整数编码"></a>整数编码</h2><p>整数编码分为，<code>有符整数</code> 和 <code>无符号整数</code> 。</p>
+    <url>/2024/01/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9F%A5%E8%AF%86/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9A%84%E4%BF%A1%E6%81%AF%E7%BC%96%E7%A0%81/</url>
+    <content><![CDATA[<h1 id="⬆️信息编码"><a href="#⬆️信息编码" class="headerlink" title="⬆️信息编码"></a>⬆️信息编码</h1><h2 id="➡️整数编码"><a href="#➡️整数编码" class="headerlink" title="➡️整数编码"></a>➡️整数编码</h2><p>整数编码分为，<code>有符整数</code> 和 <code>无符号整数</code> 。</p>
 <br>
 
-<h3 id="无符号整数"><a href="#无符号整数" class="headerlink" title="无符号整数"></a>无符号整数</h3><p>$n$ 位的二进制无符号位能表示 $2^{n}$ 数字状态，范围是 $[0,2^{n}-1]$ 。</p>
+<h3 id="🟦无符号整数"><a href="#🟦无符号整数" class="headerlink" title="🟦无符号整数"></a>🟦无符号整数</h3><p>$n$ 位的二进制无符号位能表示 $2^{n}$ 数字状态，范围是 $[0,2^{n}-1]$ 。</p>
 <br>
 
-<h3 id="有符号二进制整数"><a href="#有符号二进制整数" class="headerlink" title="有符号二进制整数"></a>有符号二进制整数</h3><p><code>0</code> 表示正，<code>1</code> 表示负数，其他位表示数值。</p>
+<h3 id="🟦有符号二进制整数"><a href="#🟦有符号二进制整数" class="headerlink" title="🟦有符号二进制整数"></a>🟦有符号二进制整数</h3><p><code>0</code> 表示正，<code>1</code> 表示负数，其他位表示数值。</p>
 <p>$n$ 位有符号数的表示范围： $-2^{n-1} ，+2^{n-1}-1$</p>
 <p>8 位二进制表示的范围是 $-128,127$ ，这里的要注意  <code>10000000</code>  表示的是有符号数 <code>-128</code> 这是被规定的。</p>
 <br>
 
-<h3 id="原-反-补-码"><a href="#原-反-补-码" class="headerlink" title="原 反 补 码"></a>原 反 补 码</h3><p><strong>一个有符号数在计算机中存储是采用补码的形式来存储的。</strong></p>
+<h3 id="🟦原-反-补-码"><a href="#🟦原-反-补-码" class="headerlink" title="🟦原 反 补 码"></a>🟦原 反 补 码</h3><p><strong>一个有符号数在计算机中存储是采用补码的形式来存储的。</strong></p>
 <p>对于正数来说，<code>原 反 补</code> 都是相同的。</p>
 <ul>
 <li><p><strong>原码</strong></p>
@@ -875,9 +802,9 @@ I hope.</p>
 </ul>
 <br>
 
-<h2 id="小数数值在计算机中的表示"><a href="#小数数值在计算机中的表示" class="headerlink" title="小数数值在计算机中的表示"></a>小数数值在计算机中的表示</h2><p>为了能表示特大或者是特小的数，采用 <code>浮点数</code> 也称 **指数形式 ** 表示。</p>
+<h2 id="➡️小数数值在计算机中的表示"><a href="#➡️小数数值在计算机中的表示" class="headerlink" title="➡️小数数值在计算机中的表示"></a>➡️小数数值在计算机中的表示</h2><p>为了能表示特大或者是特小的数，采用 <code>浮点数</code> 也称 **指数形式 ** 表示。</p>
 <p><strong>浮点数：</strong>由 <strong>阶码</strong> 和 <strong>尾数</strong> 两部分构成，其中 阶码 用于确定数的范围，尾数 确定数的精度。<br>$$<br>尾数*10^{阶码}<br>$$<br><br></p>
-<h2 id="字符编码"><a href="#字符编码" class="headerlink" title="字符编码"></a>字符编码</h2><h3 id="西文字符-ASCII-码"><a href="#西文字符-ASCII-码" class="headerlink" title="西文字符 ASCII 码"></a>西文字符 ASCII 码</h3><p>常见的一种编码，国际上通用的是7位版本。</p>
+<h2 id="➡️字符编码"><a href="#➡️字符编码" class="headerlink" title="➡️字符编码"></a>➡️字符编码</h2><h3 id="🟦西文字符-ASCII-码"><a href="#🟦西文字符-ASCII-码" class="headerlink" title="🟦西文字符 ASCII 码"></a>🟦西文字符 ASCII 码</h3><p>常见的一种编码，国际上通用的是7位版本。</p>
 <ul>
 <li><p><strong>常见的字符的编码</strong></p>
 <table>
@@ -917,7 +844,7 @@ I hope.</p>
 </ul>
 <br>
 
-<h3 id="Unicode-集"><a href="#Unicode-集" class="headerlink" title="Unicode 集"></a>Unicode 集</h3><p>用于跨语言与ASCII码兼容。</p>
+<h3 id="🟦Unicode-集"><a href="#🟦Unicode-集" class="headerlink" title="🟦Unicode 集"></a>🟦Unicode 集</h3><p>用于跨语言与ASCII码兼容。</p>
 <p>能对2万以上的汉字进行编码。</p>
 <ul>
 <li><p><strong>输入码</strong></p>
@@ -971,16 +898,291 @@ I hope.</p>
       </tags>
   </entry>
   <entry>
-    <title>学习就是这样20240112</title>
-    <url>/2024/01/12/%E5%AD%A6%E4%B9%A0%E5%B0%B1%E6%98%AF%E8%BF%99%E6%A0%B720240112/</url>
-    <content><![CDATA[<p>学习就是这样</p>
-<p><img src="/images/life/aboutlearn.jpg"></p>
+    <title>硬件</title>
+    <url>/2024/01/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9F%A5%E8%AF%86/%E7%A1%AC%E4%BB%B6/</url>
+    <content><![CDATA[<h1 id="CPU"><a href="#CPU" class="headerlink" title="CPU"></a>CPU</h1><p>cpu 也就是 <code>中央处理器</code> 主要由 <code>控制器</code>、<code>运算器</code> 和 <code>寄存</code> 构成，前两个是 CPU 的核心。</p>
+<h2 id="CPU-的主要性能指标"><a href="#CPU-的主要性能指标" class="headerlink" title="CPU 的主要性能指标"></a>CPU 的主要性能指标</h2><ul>
+<li><p><strong>字长</strong></p>
+<ul>
+<li>字：CPU一次性能处理的二进制数据，二进制数据称为 字</li>
+<li>字长：组成的二进制 <code>位数</code> ，字长越长则计算的 处理数据 越高，运算精度越高。</li>
+</ul>
+</li>
+<li><p><strong>主频</strong></p>
+<ul>
+<li>主频是CPU内核的 <code>时钟频率</code> ，单位 <code>hz</code> 目前主要用 <code>GHZ</code> 。</li>
+</ul>
+</li>
+<li><p><strong>高速缓存存储器容量</strong></p>
+<ul>
+<li>位于 CPU 和 内存 之间的存储器，主要是减少 <code>CPU</code> 从 <code>内存</code> 读取指令或数据的等待时间。</li>
+</ul>
+</li>
+<li><p><strong>多核</strong></p>
+<ul>
+<li><p>一个芯片集成多个核心，增加程序的并发性提高系统的性能。</p>
+<p>多核只是增加并行处理能力，并不是所有的任务都能采取并行处理。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>QPI 总线</strong></p>
+<ul>
+<li><p>用于 CPU内核 与 内核 之间的总线，QPI 的带宽越高，CPU 的处理能力越强。</p>
+</li>
+<li><p><strong>特点：</strong>数据传输延时短，传输速率高，每次传输2B的有效数据，双向传输。</p>
+<p><code>QPI总带宽 = QPI频率 × 每次传输的有效数据 × 2</code></p>
+</li>
+</ul>
+</li>
+</ul>
+<br>
+
+<h1 id="存储器"><a href="#存储器" class="headerlink" title="存储器"></a>存储器</h1>]]></content>
+      <categories>
+        <category>计算机知识</category>
+      </categories>
+      <tags>
+        <tag>硬件</tag>
+        <tag>CPU</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>输入与输出设备</title>
+    <url>/2024/01/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9F%A5%E8%AF%86/%E8%BE%93%E5%85%A5%E4%B8%8E%E8%BE%93%E5%87%BA%E8%AE%BE%E5%A4%87/</url>
+    <content><![CDATA[<h1 id="💻︎输入与输出"><a href="#💻︎输入与输出" class="headerlink" title="💻︎输入与输出"></a>💻︎输入与输出</h1>]]></content>
+      <categories>
+        <category>计算机知识</category>
+      </categories>
+      <tags>
+        <tag>电脑快捷键</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>黑社会为什么不能管理高科技</title>
+    <url>/2024/01/17/%E6%96%B0%E7%9F%A5/%E9%BB%91%E7%A4%BE%E4%BC%9A%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E8%83%BD%E7%AE%A1%E7%90%86%E9%AB%98%E7%A7%91%E6%8A%80/</url>
+    <content><![CDATA[<h1 id="黑社会为什么不能管理高科技"><a href="#黑社会为什么不能管理高科技" class="headerlink" title="黑社会为什么不能管理高科技?"></a>黑社会为什么不能管理高科技?</h1><p>Kamil Galeev提出一个非常有趣的观点。</p>
+<p>他说，你见过那些墨西哥的黑帮吗?他们控制了整个墨西哥的鳄梨(avocados)的产业。在世界各地,你会看到有控制毒品的黑帮，有控制水果的黑帮,有控制矿产的黑帮，甚至有控制娱乐业的黑帮。</p>
+<p>但你见过有控制高科技产业的黑帮吗?这是一个非常有趣的问题。</p>
+<p>Galeev解释道,这是因为,黑帮组织是一个相对简单的权力操作(请注意,我一直认为极权政治相比于民主政治来说,是一个非常简单的政治组织形式,这也是我对分析极权政治兴趣不大的原因之一。)。想象一下，如果黑帮进入了机械生产领域，他们只有两种结果，一是完全玩不转最后破产，二是将权力下放给专业人士，然后自己变得不再是黑帮，而只是企业主了。实际的权力会迅速被有知识的专业人士把持。</p>
+<p>Galeev说，这就是为什么黑帮总会选择运作简单的产业的根本原因。<strong>在复杂的产业中，对知识的依赖,会使得黑帮这种简单的权力操作出现困境,太过复杂而无法管理。</strong></p>
+]]></content>
+      <categories>
+        <category>新知</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Internet-Protocol-Address</title>
+    <url>/2024/01/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9F%A5%E8%AF%86/Internet-Protocol-Address/</url>
+    <content><![CDATA[<h1 id="IP地址"><a href="#IP地址" class="headerlink" title="IP地址"></a>IP地址</h1><p><strong>IP地址的组成：网络地址+主机地址</strong></p>
+<p>在 Internet 网络中，IP地址有两种表现形式：IP地址 和 域名</p>
+<p><strong>点分十进制</strong>：在 ipv4中 IP地址分为4组，每组8个二进制，每组使用 <code>.</code> 来分隔。</p>
+<br>
+
+<h1 id="IP地址的分类"><a href="#IP地址的分类" class="headerlink" title="IP地址的分类"></a>IP地址的分类</h1><p><strong>特殊的IP地址</strong></p>
+<table>
+<thead>
+<tr>
+<th>表现形式</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>以 0 开头</td>
+<td>服务器监听</td>
+</tr>
+<tr>
+<td>以 127 开头</td>
+<td>本机测试</td>
+</tr>
+<tr>
+<td>主机部分全0</td>
+<td>网络地址</td>
+</tr>
+<tr>
+<td>主机部分全1</td>
+<td>广播地址</td>
+</tr>
+</tbody></table>
+<ul>
+<li><p><strong>A类地址：</strong></p>
+<p>IP地址特征最高位是0，第一节字节是网络地址，有效地址的范围是 1~126 。</p>
+</li>
+<li><p><strong>B类地址：</strong></p>
+<p>最高位前两10，前两个字节是网络地址，地址范围 128.0.0.1 ~ 192.255.255.254</p>
+</li>
+<li><p><strong>C类地址：</strong></p>
+<p>最高位前三位是110，前三个字节是网络地址，地址范围 192.0.0.1 ~ 223.255.255.254</p>
+</li>
+<li><p><strong>D类地址：</strong></p>
+<p>地址范围是 224.0.0.0 ~ 239.255.255.255 用于多路广播，叫做多播地址</p>
+</li>
+<li><p><strong>E类地址：</strong></p>
+<p>地址范围是 240.0.0.0 ~ 255.255.255.255 保留拓展地址</p>
+</li>
+</ul>
+<br>
+
+<h1 id="保留的IP地址（私有IP地址）"><a href="#保留的IP地址（私有IP地址）" class="headerlink" title="保留的IP地址（私有IP地址）"></a>保留的IP地址（私有IP地址）</h1><p>这些地址不需要申请，可以直接使用，这些地址只能在局域网内部使用，不能出现在 Internet 上。</p>
+<table>
+<thead>
+<tr>
+<th>网络类型</th>
+<th>地址范围</th>
+<th>默认子网掩码</th>
+<th>特征</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>A</td>
+<td>10.0.0.1 ~ 10.255.255.254</td>
+<td>255.0.0.0</td>
+<td>以 10 来头</td>
+</tr>
+<tr>
+<td>B</td>
+<td>172.16.0.1 ~ 172.31.255.255.254</td>
+<td>255.255.0.0</td>
+<td>以 172.16 ~172.31 开头</td>
+</tr>
+<tr>
+<td>C</td>
+<td>192.168.0.1 ~ 192.168.255.254</td>
+<td>255.255.255.0</td>
+<td>以 192.168 开头</td>
+</tr>
+</tbody></table>
+<br>
+
+<h1 id="IPV6"><a href="#IPV6" class="headerlink" title="IPV6"></a>IPV6</h1><p>由128位二进制构成，采用 <strong>冒号十六进制</strong> 表示，并分成了8组，每组4位的十六进制。</p>
+<p>理论上说 IPV6 的 IP 地址个数是 IPV4 的 IP 地址个数的 $2^{96}$ 倍。<br>$$<br>\frac {2^{128}}{2^{32}}&#x3D;2^{96}<br>$$<br><br></p>
+<h2 id="使用冒分十六进制"><a href="#使用冒分十六进制" class="headerlink" title="使用冒分十六进制"></a>使用冒分十六进制</h2><ul>
+<li><p><strong>零点压缩法：</strong></p>
+<p>把连续的1组或多组0可以省略</p>
+<p>如：<code>EF00:0000:0000:0000:0002:0000:0001:0003</code></p>
+<p>压缩为：<code>EF00::0002:0000:0001:0003</code></p>
+</li>
+<li><p><strong>可省略每组前面的零</strong></p>
+<p>如：<code>EF00:0000:0000:0000:0002:0000:0001:0003</code></p>
+<p>压缩为：<code>EF00:0:0:0002:0:1:3</code></p>
+</li>
+<li><p><strong>也可以上面的合起来一起用</strong></p>
+<p>如：<code>EF00:0000:0000:0000:0002:0000:0001:0003</code></p>
+<p>压缩为：<code>EF00::2:0:1:3</code></p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>网络层</category>
+      </categories>
+      <tags>
+        <tag>IP地址</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>subnetting</title>
+    <url>/2024/01/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9F%A5%E8%AF%86/subnetting/</url>
+    <content><![CDATA[<h1 id="1-划分子网"><a href="#1-划分子网" class="headerlink" title="1.划分子网"></a>1.划分子网</h1><p>划分子网用于缓解网络号不足的情况，网络允许划分更小的网络，这样的网络称为 <code>子网</code> ，从实际上就是从主机部分借位来表示子网。</p>
+<ul>
+<li><p><strong>子网号</strong></p>
+<p>主机号的前几位</p>
+</li>
+<li><p><strong>主机位数</strong></p>
+<p>主机位数&#x3D;32-现有子网掩码1的个数</p>
+</li>
+</ul>
+<br>
+
+<h2 id="1-1-求子网地址和子网号："><a href="#1-1-求子网地址和子网号：" class="headerlink" title="1.1 求子网地址和子网号："></a>1.1 求子网地址和子网号：</h2><p><strong>网络号</strong> 也称 <strong>网络地址</strong></p>
+<p>子网地址：网络号（照抄）+ 子网号（照抄）+ 主机号（全部是0）</p>
+<p>广播地址：网络号（照抄）+ 子网号（照抄）+ 主机号（全部是1）</p>
+<p>子网掩码：网络号（全部为1）+ 子网号（全部为1）+ 主机号（全部是1）</p>
+<br>
+
+<h3 id="1-1-2-示列"><a href="#1-1-2-示列" class="headerlink" title="1.1.2 示列:"></a>1.1.2 示列:</h3><p>IP地址为 <code>192.168.1.163</code>，子网掩码 <code>255.255.255.224</code> 。</p>
+<p> 网络号是 <code>192.168.1</code> </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">相关地址: 11000000  10101000  00000001  10100011   192.168.1.163</span><br><span class="line">子网掩码: 11111111  11111111  11111111  11100000   255.255.255.224</span><br><span class="line">子网地址: 11000000  10101000  00000001  10100000   192.168.1.160</span><br></pre></td></tr></table></figure>
+
+<p>这里的子网号是5，子网位数本示列是3，所以10100000，取三位是5。</p>
+<p>子网号（数字）：把IP地址和子网掩码最后一组进行 <code>与运算</code> ，在结果上从左往右区 n 位，再转十进制，不过在算 <strong>子网地址</strong> 的时候子网号是八位的二进制转十进制。</p>
+<h2 id="1-2-其他"><a href="#1-2-其他" class="headerlink" title="1.2 其他"></a>1.2 其他</h2><p> 子网个数 &#x3D; $2^{n}$ （n 表示子网位数）</p>
+<p>主机数量 &#x3D; $2^{m}-2$ （m 表示主机位数）</p>
+]]></content>
+      <categories>
+        <category>网络层</category>
+      </categories>
+      <tags>
+        <tag>划分子网</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>抬杠与反驳</title>
+    <url>/2024/01/17/%E6%96%B0%E7%9F%A5/%E6%8A%AC%E6%9D%A0%E4%B8%8E%E5%8F%8D%E9%A9%B3/</url>
+    <content><![CDATA[<blockquote>
+<p>意义很简单，防弹头盔防不了绝大多数步枪穿甲弹直射 &#x3D; 没用</p>
+<p>给你运到战场上给别人不给你，急死你			</p>
+<p align="right"><strong>--小恶魔channel</strong></p>
+</blockquote>
+<blockquote>
+<p>自己的需求要自己的需求，大可不必硬把程序员群体拉出来挡枪 … …</p>
+<p>想要高分高刷可以理解，单高分高刷配移动旗舰cpu还要求没有独显就很离谱了，这配置基本上就是坡脚到极致，能开七八个虚拟机，但是除此之外又只能搞搞文本工作，开个效果多一点的网页估计都会卡。厂家真整出这配置的机子能卖个谁？</p>
+<p>而且能么能满足你需求的产品又不是没有，各种高配工作站游戏本，多个独显你不用它也不会爆炸，还能保证你的高分高刷任何都丝滑</p>
+<p>真按你说的配置整出来这个产品线，一眼就卖不出去多少台，妥妥的针对小众群体的智商收割机，或者是给不差钱的大公司采购用的，单台价格和有独显的基本不会有区别</p>
+<p align="right"><strong>爱睡觉のchiron</strong></p></blockquote>
+]]></content>
+      <categories>
+        <category>新知</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>技术与盈利</title>
+    <url>/2024/01/17/%E6%96%B0%E7%9F%A5/%E6%8A%80%E6%9C%AF%E4%B8%8E%E7%9B%88%E5%88%A9/</url>
+    <content><![CDATA[<blockquote>
+<p>我做现在的行业已经快两年了，真的可以说，成本很低，风险很低，收入还不错，不错的月份 3-5W 纯利润，淡季1W，合法，只是需要一定的技术性，不招人自己做的话确实挺累的，有朋友不信当然可以，我也不会说是什么行业的，有不错的行业不可能像网上那些老师一样囔囔着告诉别人。我只是想告诉有心的朋友，不要老是把眼光盯着那些大家都看得到的行业，多花点时间去找找那些平时注意不到的行业，选择很重要。	</p>
+<p align="right"><strong>--锅吧吧务团队1</strong></p>
+</blockquote>
+<blockquote>
+<p>我现在开店一年，目前有两家店，我走的是口碑路线，目前两家店都是在美团外卖全杭州肉夹馍品类排行前五名。新店开业2个月三千多单没有一条差评，做到后面你会发现，老顾客回头客非常多，口碑这条路最重要的就是菜品质量和售后服务，菜品质量我就不说了，一个人一个口味，只要新鲜干净卫生就能打败80%的同行，售后我这边的策略是只要你有问题，就给你退，你觉得贵，给你退，忘记放筷子，包装破损，送的慢，只要你电话打过来，就给你退，真是实现起来没有我想象中那么高的退单率，因为正常人占多数的		</p>
+<p align="right"><strong>--摸鱼的阿柴doge</strong></p>
+</blockquote>
+<blockquote>
+<p>我大学经济系的，全班都在炒股，毕业后也大部分都证券公区。但毕业5年后，仍在做股票的只剩一人并且现在操作的资金都上亿了，而且他也不是像你们想象那样靠技术做起来的（想靠技术做股票的已经全部赔的裤衩不剩，再也不做股票了），他能做起来是因为他是靠内部消息做起来的股票（他家里也是靠内幕消息做起来的）。所以，奉劝各位别以为能靠自己本事靠技术操作股票发财，别想太多（除非你关系与我的同学一样过硬），找个班上吧，有钱丢支付宝，定期啥的踏踏实实过日子就算了，别像我大学教我们炒股票的40多岁还单身没钱结婚的老师那样蹉跎半生</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>新知</category>
+      </categories>
+      <tags>
+        <tag>行业</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>人际生活</title>
+    <url>/2024/01/17/%E7%94%9F%E6%B4%BB/%E4%BA%BA%E9%99%85%E7%94%9F%E6%B4%BB/</url>
+    <content><![CDATA[<blockquote>
+<p>很喜欢看到的一个评论，一个从不关心你物质生活的人突然开始关心你的精神生活。</p>
+<p>建议大家捂紧自己钱包，怕是在使坏</p>
+</blockquote>
 ]]></content>
       <categories>
         <category>生活</category>
       </categories>
       <tags>
-        <tag>学习</tag>
+        <tag>life</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>日常问题</title>
+    <url>/2024/01/17/%E6%96%B0%E7%9F%A5/%E6%97%A5%E5%B8%B8%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<blockquote>
+<p>环境闭塞空气不畅通含氧量第低，长时间高负荷脑力动作</p>
+<p>自从得了这个病发现了好几个中年程序员都有这个毛病，</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>生活</category>
+      </categories>
+      <tags>
+        <tag>life</tag>
       </tags>
   </entry>
 </search>
